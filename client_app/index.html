@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Angular App</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+</head>
+<body ng-controller="MainController as main" ng-cloak>
+
+    <main class="content" ui-view>
+      <!-- PAGE TEMPLATES INSERT HERE -->
+    </main>
+
+  </div>
+
+  <footer>
+
+  </footer>
+
+  <!-- Angular scripts -->
+  <script src="/app.js"></script>
+  <script src="/app.routes.js"></script>
+  <script src="/services/_service.js"></script>
+  <script src="/controllers/login_controller.js"></script>
+</body>
+</html>

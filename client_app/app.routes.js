@@ -1,0 +1,22 @@
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
+    .config(AppRoutes);
+
+  AppRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
+
+  function AppRoutes($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state("home", {
+        url: "/",
+        templateUrl: "/templates/home.html",
+        controller: "MainController",
+        controllerAs: "vm"
+      })
+
+    $urlRouterProvider.otherwise("/");
+  }
+
+})();
