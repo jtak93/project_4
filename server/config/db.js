@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/esports');
+mongoose.Promise = global.Promise;
 
 // shortcut to mongoose.connection object
 var db = mongoose.connection;
