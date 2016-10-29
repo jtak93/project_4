@@ -8,7 +8,6 @@ var cors = require('cors');
 var bluebird = require('bluebird')
 var db = require('./config/db')
 
-var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
@@ -26,8 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
