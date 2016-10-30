@@ -149,7 +149,7 @@
       .state("home", {
         url: "/",
         // TODO: URL not loading
-        templateUrl: "/templates/home.html",
+        templateUrl: "/home.html",
         controller: "MainController",
         controllerAs: "vm"
       })
