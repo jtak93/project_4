@@ -2,7 +2,7 @@
 Welcome to Esports Madness, a place to add a little fun to your esports viewing parties!
 Bet on games, win e-coins, and show your superior knowledge of the scene.
 ## Installation
-TODO: Describe the installation process
+TODO: Describe the installation process 
 ## Project Approach
 
 ## Usage
