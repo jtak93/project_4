@@ -5,6 +5,8 @@ var uglify = require('gulp-uglify');
 gulp.task('scripts', function() {
     return gulp.src([
         'src/app.js',
+        'src/services/auth.token.service.js',
+        'src/services/*.js',
         'src/**/*.js'
         ])
         .pipe(concat('all.js'))
@@ -20,4 +22,4 @@ gulp.task('styles', ['scripts'], function() {
 
 gulp.task('default', ['scripts', 'styles']);
 
-// gulp.watch(['src/**/*.js', 'src/**/*.css'], ['default']);
+gulp.watch(['src/**/*.js', 'src/**/*.css'], ['default']);

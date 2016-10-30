@@ -53,7 +53,7 @@
 
   </footer>
   <!-- LOGIN/SIGNUP MODAL -->
-  <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div ng-controller="UserController as user" class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
           <br>
@@ -73,7 +73,7 @@
               <div class="control-group">
                 <label class="control-label" for="userid">Username:</label>
                 <div class="controls">
-                  <input required="" id="userid" name="userid" type="text" class="form-control" placeholder="JoeSixpack" class="input-medium" required="">
+                  <input ng-model="user.username" required="" id="userid" name="userid" type="text" class="form-control" placeholder="JoeSixpack" class="input-medium" required="">
                 </div>
               </div>
 
@@ -81,7 +81,7 @@
               <div class="control-group">
                 <label class="control-label" for="passwordinput">Password:</label>
                 <div class="controls">
-                  <input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">
+                  <input ng-model="user.password" required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">
                 </div>
               </div>
 
@@ -89,7 +89,7 @@
               <div class="control-group">
                 <label class="control-label" for="signin"></label>
                 <div class="controls">
-                  <button id="signin" name="signin" class="btn btn-success">Sign In</button>
+                  <button ng-click="user.login()" id="signin" name="signin" class="btn btn-success">Sign In</button>
                 </div>
               </div>
               </fieldset>
