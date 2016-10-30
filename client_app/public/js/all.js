@@ -10,6 +10,44 @@
 
   angular
     .module("app")
+    .factory("ServiceName", ServiceName);
+
+  ServiceName.$inject = [];
+
+  function ServiceName() {
+    var service = {
+      name:        ''
+    };
+
+    return service;
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
+    .factory("UserService", UserService);
+
+  UserService.$inject = [];
+
+  function UserService() {
+    var service = {
+      name:        ''
+    };
+
+    return service;
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
     .config(AppRoutes);
 
   AppRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
@@ -18,7 +56,7 @@
     $stateProvider
       .state("home", {
         url: "/",
-        templateUrl: "/src/templates/home.html",
+        templateUrl: "/templates/home.html",
         controller: "MainController",
         controllerAs: "vm"
       })
@@ -48,16 +86,12 @@
 
   angular
     .module("app")
-    .factory("ServiceName", ServiceName);
+    .controller("LoginController", LoginController);
 
-  ServiceName.$inject = [];
+  LoginController.$inject = ["$log"];
 
-  function ServiceName() {
-    var service = {
-      name:        ''
-    };
-
-    return service;
+  function LoginController($log) {
+    var vm = this;
   }
 
 })();
