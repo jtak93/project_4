@@ -10,6 +10,8 @@
   function HomeController($log, MatchService) {
     var vm = this;
     vm.all = all();
+
+    vm.bets = [1, 2, 3, 4]
     console.log(vm.all);
 
     function all() {

@@ -5,6 +5,30 @@
 
 })();
 
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
+    .config(AppRoutes);
+
+  AppRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
+
+  function AppRoutes($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state("home", {
+        url: "/",
+        // TODO: URL not loading
+        controller: "HomeController",
+        controllerAs: "home",
+        templateUrl: "src/home_feature/home.html"
+      })
+
+    $urlRouterProvider.otherwise("/");
+  }
+
+})();
+
 (function(){
   'use strict';
 
@@ -189,30 +213,6 @@
 
   angular
     .module("app")
-    .config(AppRoutes);
-
-  AppRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
-
-  function AppRoutes($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state("home", {
-        url: "/",
-        // TODO: URL not loading
-        controller: "HomeController",
-        controllerAs: "home",
-        templateUrl: "src/home_feature/home.html"
-      })
-
-    $urlRouterProvider.otherwise("/");
-  }
-
-})();
-
-(function() {
-  "use strict";
-
-  angular
-    .module("app")
     .controller("MainController", MainController);
 
   MainController.$inject = ["$log"];
@@ -235,6 +235,8 @@
   function HomeController($log, MatchService) {
     var vm = this;
     vm.all = all();
+
+    vm.bets = [1, 2, 3, 4]
     console.log(vm.all);
 
     function all() {

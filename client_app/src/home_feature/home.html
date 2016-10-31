@@ -1,5 +1,4 @@
 
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
@@ -23,7 +22,7 @@
                   ODDS
                 </div>
                 <div class="col-sm-2">
-                  <button class="btn">=></button>
+                  <button ng-if="user.isLoggedIn" class="btn">=></button>
                 </div>
               </div>
 
@@ -35,7 +34,7 @@
                   ODDS
                 </div>
                 <div class="col-sm-2">
-                  <button class="btn">=></button>
+                  <button ng-if="user.isLoggedIn" class="btn">=></button>
                 </div>
               </div>
 
@@ -44,6 +43,14 @@
         </div> <!-- closes ng-repeat -->
       </div> <!-- closes matches -->
     </div>
-  </div>
 
+    <div ng-if="user.isLoggedIn" class="col-sm-2 bet slip">
+      BETSLIP
+      <div class="container">
+        <div ng-repeat="bet in home.bets" class="row">
+          {{bet}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
