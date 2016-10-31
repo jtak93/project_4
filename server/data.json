@@ -1,0 +1,200 @@
+{
+    "generated_at": "2016-10-31T00:46:50+00:00",
+    "schema": "http:\/\/schemas.sportradar.com\/bsa\/json\/v1\/endpoints\/csgo\/tournaments.json",
+    "tournaments": [{
+        "id": "sr:tournament:2390",
+        "name": "ESL One",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:34297",
+            "name": "ESL One 2016 - New York"
+        }
+    }, {
+        "id": "sr:tournament:2392",
+        "name": "ESL Pro League",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:34495",
+            "name": "ESL Pro League Season IV"
+        }
+    }, {
+        "id": "sr:tournament:2414",
+        "name": "Intel Extreme Masters",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:35758",
+            "name": "Intel Extreme Masters XI - Oakland"
+        }
+    }, {
+        "id": "sr:tournament:2464",
+        "name": "Dreamhack",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1114",
+            "name": "Dreamhack CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:35253",
+            "name": "Dreamhack 2016 - Bucharest"
+        }
+    }, {
+        "id": "sr:tournament:2498",
+        "name": "ESL Expo",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:12594",
+            "name": "ESL Expo 2016 - Barcelona"
+        }
+    }, {
+        "id": "sr:tournament:2547",
+        "name": "ESL Meisterschaft",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:35648",
+            "name": "ESL Meisterschaft Winter 2016"
+        }
+    }, {
+        "id": "sr:tournament:2551",
+        "name": "ESL UK Premiership",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:34927",
+            "name": "ESL UK Premiership 2016 - Summer"
+        }
+    }, {
+        "id": "sr:tournament:13661",
+        "name": "ESEA Premier Division",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1404",
+            "name": "ESEA CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:34773",
+            "name": "ESEA Premier Division Season 22 - Global Challange"
+        }
+    }, {
+        "id": "sr:tournament:13715",
+        "name": "ESL Benelux Championship",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:35523",
+            "name": "ESL Benelux Championship 2016 - Season 2"
+        }
+    }, {
+        "id": "sr:tournament:13769",
+        "name": "ESL Championnat National",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:35525",
+            "name": "ESL Championnat National Winter Season 2016"
+        }
+    }, {
+        "id": "sr:tournament:13913",
+        "name": "ESL ANZ Championship",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:34635",
+            "name": "ESL ANZ Championship 2016 - Season 2"
+        }
+    }, {
+        "id": "sr:tournament:14083",
+        "name": "ESL Mistrzostwa Polski",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:34767",
+            "name": "ESL Mistrzostwa Polski Season 13"
+        }
+    }, {
+        "id": "sr:tournament:14121",
+        "name": "ESL Brasil Premier League",
+        "sport": {
+            "id": "sr:sport:109",
+            "name": "Counter-Strike"
+        },
+        "category": {
+            "id": "sr:category:1041",
+            "name": "ESL CS:GO"
+        },
+        "current_season": {
+            "id": "sr:season:33955",
+            "name": "ESL Brasil Premier League Season I"
+        }
+    }]
+}
