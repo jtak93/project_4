@@ -4,9 +4,45 @@
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
       <h1> SHOW MATCHES </h1>
-      <ul>
-        <li ng-repeat="match in home.matches">{{match}}</li>
-      </ul>
+      <div class="container-fluid matches">
+        <div class="row" ng-repeat="match in home.matches track by match._id">
+          <div class="col-sm-12">
+            <div class="container-fluid">
+
+              <div class="row tournament-name">
+                <div class="col-sm-6">
+                  {{ match.tournament }}
+                </div>
+              </div>
+
+              <div class="row team-1">
+                <div class="col-sm-4">
+                  {{ match.teams[0] }}
+                </div>
+                <div class="col-sm-6">
+                  ODDS
+                </div>
+                <div class="col-sm-2">
+                  <button class="btn">=></button>
+                </div>
+              </div>
+
+              <div class="row team-2">
+                <div class="col-sm-4">
+                  {{ match.teams[1] }}
+                </div>
+                <div class="col-sm-6">
+                  ODDS
+                </div>
+                <div class="col-sm-2">
+                  <button class="btn">=></button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div> <!-- closes ng-repeat -->
+      </div> <!-- closes matches -->
     </div>
   </div>
 

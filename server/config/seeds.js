@@ -27,6 +27,17 @@ var matches = [
     result: null,
     bets: []
   },
+  {
+    game: 'CSGO',
+    tournament: 'ESL Two',
+    date: Date.now(),
+    teams: ['t1', 't2'],
+    t1bet: 0,
+    t2bet: 0,
+    active: false,
+    result: 2,
+    bets: []
+  }
 ];
 
 Match

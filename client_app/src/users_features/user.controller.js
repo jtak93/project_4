@@ -22,7 +22,7 @@
         var token = AuthTokenService.getToken();
         vm.isLoggedIn = true;
         var user = decode(token);
-        vm.username = user.username
+        vm.username = user.username;
       } else {
         vm.isLoggedIn = false;
       }

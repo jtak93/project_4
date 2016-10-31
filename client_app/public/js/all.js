@@ -189,58 +189,12 @@
 
   angular
     .module("app")
-    .config(AppRoutes);
-
-  AppRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
-
-  function AppRoutes($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state("home", {
-        url: "/",
-        // TODO: URL not loading
-        controller: "HomeController",
-        controllerAs: "home",
-        templateUrl: "src/home_feature/home.html"
-      })
-
-    $urlRouterProvider.otherwise("/");
-  }
-
-})();
-
-(function() {
-  "use strict";
-
-  angular
-    .module("app")
     .controller("MainController", MainController);
 
   MainController.$inject = ["$log"];
 
   function MainController($log) {
     var vm = this;
-  }
-
-})();
-
-(function() {
-  "use strict";
-
-  angular
-    .module("app")
-    .controller("HomeController", HomeController);
-
-  HomeController.$inject = ["$log", "MatchService"];
-
-  function HomeController($log, MatchService) {
-    var vm = this;
-    vm.all = all();
-    console.log(vm.all);
-
-    function all() {
-      MatchService.all()
-        .then( matches => vm.matches = matches.data)
-    }
   }
 
 })();
@@ -269,7 +223,7 @@
         var token = AuthTokenService.getToken();
         vm.isLoggedIn = true;
         var user = decode(token);
-        vm.username = user.username
+        vm.username = user.username;
       } else {
         vm.isLoggedIn = false;
       }
@@ -312,6 +266,52 @@
       return JSON.parse($window.atob(token.split('.')[1])).user;
     }
 
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
+    .controller("HomeController", HomeController);
+
+  HomeController.$inject = ["$log", "MatchService"];
+
+  function HomeController($log, MatchService) {
+    var vm = this;
+    vm.all = all();
+    console.log(vm.all);
+
+    function all() {
+      MatchService.all()
+        .then( matches => vm.matches = matches.data)
+    }
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
+    .config(AppRoutes);
+
+  AppRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
+
+  function AppRoutes($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state("home", {
+        url: "/",
+        // TODO: URL not loading
+        controller: "HomeController",
+        controllerAs: "home",
+        templateUrl: "src/home_feature/home.html"
+      })
+
+    $urlRouterProvider.otherwise("/");
   }
 
 })();
