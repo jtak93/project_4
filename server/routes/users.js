@@ -8,6 +8,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+// use process.env.API_TOKEN for api token
 router.post('/login', token.create);
+
 
 module.exports = router;

@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var bluebird = require('bluebird')
+
+require('dotenv').config();
 var db = require('./config/db')
 
 var users = require('./routes/users');
