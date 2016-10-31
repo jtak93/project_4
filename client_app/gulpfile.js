@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 gulp.task('scripts', function() {
     return gulp.src([
         'src/app.js',
+        'src/app.routes.js',
         'src/services/auth.token.service.js',
         'src/services/*.js',
         'src/**/*.js'
