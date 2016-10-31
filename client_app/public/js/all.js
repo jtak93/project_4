@@ -101,6 +101,35 @@
 
   angular
     .module("app")
+    .factory("MatchService", MatchService);
+
+  MatchService.$inject = ["$http", "AuthTokenService", "$window", "$log"];
+
+  function MatchService($http, AuthTokenService, $window, $log) {
+
+    var baseUrl = 'http://localhost:3000';
+
+    var service = {
+      all: all
+    };
+    return service;
+
+    function all() {
+      var url = `${baseUrl}/api/matches`
+      return $http.get(url)
+                  .then((matches) => {
+                    console.log(matches)
+                    return matches;
+                  });
+    }
+  }
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
     .factory("UserService", UserService);
 
   UserService.$inject = ["$http", "AuthTokenService", "$window", "$log"];
@@ -170,7 +199,7 @@
         url: "/",
         // TODO: URL not loading
         controller: "HomeController",
-        controllerAs: "vm",
+        controllerAs: "home",
         templateUrl: "src/home_feature/home.html"
       })
 
@@ -201,10 +230,17 @@
     .module("app")
     .controller("HomeController", HomeController);
 
-  HomeController.$inject = ["$log"];
+  HomeController.$inject = ["$log", "MatchService"];
 
-  function HomeController($log) {
+  function HomeController($log, MatchService) {
     var vm = this;
+    vm.all = all();
+    console.log(vm.all);
+
+    function all() {
+      MatchService.all()
+        .then( matches => vm.matches = matches.data)
+    }
   }
 
 })();

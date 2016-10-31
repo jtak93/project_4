@@ -13,7 +13,7 @@
         url: "/",
         // TODO: URL not loading
         controller: "HomeController",
-        controllerAs: "vm",
+        controllerAs: "home",
         templateUrl: "src/home_feature/home.html"
       })
 

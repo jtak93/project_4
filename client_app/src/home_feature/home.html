@@ -3,8 +3,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-    <h1> ANGULAR APP </h1>
-      Hello
+      <h1> SHOW MATCHES </h1>
+      <ul>
+        <li ng-repeat="match in home.matches">{{match}}</li>
+      </ul>
     </div>
   </div>
 
