@@ -7,6 +7,25 @@ var jwtOptions = {
  expiresIn: '2 days'
 };
 
+function authenticate(req, res, next) {
+  var authHeader = req.get('Authorization');
+
+  if (!authHeader) {
+    return next({
+      status:  401,
+      message: 'Authentication failed: missing auth header'
+    })
+  }
+
+  var token = authHeader.split(' ')[1]
+
+  jwt.verify(token, secret, (err, decoded) => {
+    if (err) return next(err)
+    req.decoded = decoded;
+    next()
+  });
+}
+
 function create(req, res, next) {
   if (!req.body.username || !req.body.password) {
     return next({
@@ -30,5 +49,6 @@ function create(req, res, next) {
 }
 
 module.exports = {
- create:       create
+  create:        create,
+  authenticate:  authenticate
 };
