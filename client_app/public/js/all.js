@@ -112,7 +112,8 @@
     var user = null;
 
     var service = {
-      login: login
+      login: login,
+      signUp: signUp
     };
     return service;
 
@@ -125,6 +126,20 @@
                     user = decode(token);
                     console.log(user)
                     return user;
+                  });
+    }
+
+    function signUp(user) {
+      console.log("user service signup:", user)
+      var url = `${baseUrl}/signup`;
+      return $http.post(url, user)
+                  .then((response) => {
+                    console.log(response)
+                    // var token = response.data.token;
+                    // AuthTokenService.setToken(token);
+                    // user = decode(token);
+                    // console.log(user)
+                    // return user;
                   });
     }
 
@@ -186,9 +201,20 @@
   function UserController($log, UserService) {
     var vm = this;
     vm.login = login;
+    vm.signUp = signUp;
 
     function login() {
       return UserService.login(vm.username, vm.password)
+    }
+
+    function signUp() {
+      var newUser = {
+        username: vm.username,
+        email: vm.email,
+        password: vm.password,
+        pwConfirm: vm.pwConfirm
+      }
+      return UserService.signUp(newUser)
     }
   }
 
