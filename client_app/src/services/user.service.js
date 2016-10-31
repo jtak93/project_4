@@ -15,7 +15,8 @@
 
     var service = {
       login: login,
-      signUp: signUp
+      signUp: signUp,
+      logout: logout
     };
     return service;
 
@@ -43,6 +44,10 @@
                     // console.log(user)
                     // return user;
                   });
+    }
+
+    function logout() {
+      return AuthTokenService.removeToken();
     }
 
     function decode(token) {

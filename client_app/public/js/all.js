@@ -113,7 +113,8 @@
 
     var service = {
       login: login,
-      signUp: signUp
+      signUp: signUp,
+      logout: logout
     };
     return service;
 
@@ -141,6 +142,10 @@
                     // console.log(user)
                     // return user;
                   });
+    }
+
+    function logout() {
+      return AuthTokenService.removeToken();
     }
 
     function decode(token) {
@@ -196,17 +201,35 @@
     .module("app")
     .controller("UserController", UserController);
 
-  UserController.$inject = ["$log", "UserService", "$state"];
+  UserController.$inject = ["$log", "UserService", "$state", "AuthTokenService", "$window"];
 
-  function UserController($log, UserService, $state) {
+  function UserController($log, UserService, $state, AuthTokenService, $window) {
     var vm = this;
     vm.login = login;
     vm.signUp = signUp;
+    vm.logout = logout;
     vm.noMatch = null;
+    vm.isLoggedIn = null;
+
+    checkLoggedIn();
+    // check if logged in
+    function checkLoggedIn() {
+      if (AuthTokenService.getToken()) {
+        var token = AuthTokenService.getToken();
+        vm.isLoggedIn = true;
+        var user = decode(token);
+        vm.username = user.username
+      } else {
+        vm.isLoggedIn = false;
+      }
+
+    }
 
     function login() {
-      UserService.login(vm.username, vm.password);
-      $state.go('home')
+      UserService.login(vm.username, vm.password)
+        .then( () => {
+          vm.isLoggedIn = true
+        });
     }
 
     function signUp() {
@@ -218,6 +241,9 @@
           pwConfirm: vm.pwConfirm
         }
         return UserService.signUp(newUser)
+          .then( () => {
+            vm.isLoggedIn = true
+          })
       }
       // TODO show user passwords dont match
       else {
@@ -225,6 +251,16 @@
         return console.log("passwords dont match")
       }
     }
+
+    function logout() {
+      UserService.logout();
+      vm.isLoggedIn = false;
+    }
+
+    function decode(token) {
+      return JSON.parse($window.atob(token.split('.')[1])).user;
+    }
+
   }
 
 })();
