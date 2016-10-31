@@ -22,7 +22,7 @@
                   ODDS
                 </div>
                 <div class="col-sm-2">
-                  <button ng-if="user.isLoggedIn" class="btn">=></button>
+                  <button ng-if="user.isLoggedIn" ng-click="home.betTeam1(match)" class="btn">=></button>
                 </div>
               </div>
 
@@ -34,7 +34,7 @@
                   ODDS
                 </div>
                 <div class="col-sm-2">
-                  <button ng-if="user.isLoggedIn" class="btn">=></button>
+                  <button ng-if="user.isLoggedIn" ng-click="home.betTeam2(match)" class="btn">=></button>
                 </div>
               </div>
 
@@ -48,7 +48,10 @@
       BETSLIP
       <div class="container">
         <div ng-repeat="bet in home.bets" class="row">
-          {{bet}}
+          <!-- TODO: MAKE A FORM -->
+          {{bet.game}}
+          {{bet.teams[0]}}
+          {{bet.teams[1]}}
         </div>
       </div>
     </div>
