@@ -11,6 +11,7 @@ require('dotenv').config();
 var db = require('./config/db')
 
 var users = require('./routes/users');
+var matches = require('./api/routes/matches');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', users);
+app.use('/api', matches);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
