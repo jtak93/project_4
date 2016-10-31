@@ -128,8 +128,12 @@
               <div class="control-group">
                 <label class="control-label" for="Email">Email:</label>
                 <div class="controls">
-                  <input ng-model="user.email" id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">
+                  <input ng-model="user.email" id="Email" name="Email" class="form-control" type="text" placeholder="Email" class="input-large" required="">
                 </div>
+              </div>
+
+              <div class="control-group" ng-if="user.noMatch">
+                <label class="control-label" for="Errors">Password doesn't match</label>
               </div>
 
               <!-- Button -->
