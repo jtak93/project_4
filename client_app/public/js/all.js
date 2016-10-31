@@ -169,9 +169,9 @@
       .state("home", {
         url: "/",
         // TODO: URL not loading
-        controller: "MainController",
+        controller: "HomeController",
         controllerAs: "vm",
-        templateUrl: "src/templates/home.html"
+        templateUrl: "src/home_feature/home.html"
       })
 
     $urlRouterProvider.otherwise("/");
@@ -189,6 +189,21 @@
   MainController.$inject = ["$log"];
 
   function MainController($log) {
+    var vm = this;
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
+    .controller("HomeController", HomeController);
+
+  HomeController.$inject = ["$log"];
+
+  function HomeController($log) {
     var vm = this;
   }
 

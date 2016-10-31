@@ -12,9 +12,9 @@
       .state("home", {
         url: "/",
         // TODO: URL not loading
-        controller: "MainController",
+        controller: "HomeController",
         controllerAs: "vm",
-        templateUrl: "src/templates/home.html"
+        templateUrl: "src/home_feature/home.html"
       })
 
     $urlRouterProvider.otherwise("/");
