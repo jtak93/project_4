@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+var Schema = mongoose.Schema
+
 var betSchema = new mongoose.Schema({
   matchId: { type: Schema.Types.ObjectId, ref: 'Match' },
   userId: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -11,7 +13,7 @@ var MatchSchema = new mongoose.Schema({
   game: String,
   tournament: String,
   date: Date,
-  teams: Number,
+  teams: [String],
   t1bet: Number,
   t2bet: Number,
   active: Boolean,
