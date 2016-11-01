@@ -20,7 +20,6 @@
       var url = `${baseUrl}/api/matches`
       return $http.get(url)
                   .then((matches) => {
-                    console.log(matches)
                     return matches;
                   });
     }

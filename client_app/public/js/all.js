@@ -147,7 +147,6 @@
       var url = `${baseUrl}/api/matches`
       return $http.get(url)
                   .then((matches) => {
-                    console.log(matches)
                     return matches;
                   });
     }
@@ -235,19 +234,23 @@
     .module("app")
     .controller("HomeController", HomeController);
 
-  HomeController.$inject = ["$log", "MatchService"];
+  HomeController.$inject = ["$log", "MatchService", "$scope"];
 
-  function HomeController($log, MatchService) {
+  function HomeController($log, MatchService, $scope) {
     var vm = this;
     vm.all = all();
-    vm.bets = [];
+    vm.betSlip = [];
     vm.betSlipIndices = [];
-    vm.risks = [];
+    vm.risk = 0;
     vm.totalRisk = riskSum;
 
     vm.betTeam1 = betTeam1;
     vm.betTeam2 = betTeam2;
     vm.placeBet = placeBet;
+    vm.test = function() {
+      console.log(vm.risk)
+    }
+
 
     function all() {
       vm.matches = MatchService.all()
@@ -259,8 +262,7 @@
       var idx = vm.matches.indexOf(match)
       vm.matches.splice(idx, 1);
       match.teamPick = team;
-      vm.bets.push(match);
-      vm.risks.push(null)
+      vm.betSlip.push(match);
       vm.betSlipIndices.push(idx);
       // use service to make AJAX to server
     }
@@ -270,17 +272,16 @@
       var idx = vm.matches.indexOf(match)
       vm.matches.splice(idx, 1);
       match.teamPick = team;
-      vm.bets.push(match);
-      vm.risks.push(null)
+      vm.betSlip.push(match);
       vm.betSlipIndices.push(idx);
       // use service to make AJAX to server
     }
     function riskSum() {
-      var sum = 0;
-      vm.risks.forEach(risk => {
-        sum += risk;
-      })
-      return sum;
+      // var sum = 0;
+      // vm.risks.forEach(risk => {
+      //   sum += risk;
+      // })
+      return vm.risk;
     }
 
     function placeBet() {

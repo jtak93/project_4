@@ -47,7 +47,7 @@
       <div class="">
         BETSLIP
       </div>
-      <div ng-repeat="bet in home.bets track by $index" class="">
+      <div ng-repeat="bet in home.betSlip track by $index" class="">
         <!-- TODO: MAKE A FORM -->
         <div>
           <button>X</button>Game: {{bet.game}}
@@ -58,13 +58,14 @@
         <div>
           PICK: {{bet.teamPick}}
         </div>
-        <label ng-model="home.risks[$index]" class="control-label" for="Risk">Risk:</label>
-        <input type="number">
+        <label class="control-label" for="Risk">Risk:</label>
+        <input ng-model="home.risk" type="number">
       </div>
       <div>
         <div>
           TOTAL RISK: {{home.totalRisk()}}
         </div>
+        <button ng-click="home.test()">TEST</button>
         <button ng-click="home.placeBet()" class="btn btn-success">Place Bets</button>
         <button class="btn btn-danger">Remove Bets</button>
       </div>
