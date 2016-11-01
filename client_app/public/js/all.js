@@ -18,10 +18,15 @@
     $stateProvider
       .state("home", {
         url: "/",
-        // TODO: URL not loading
         controller: "HomeController",
         controllerAs: "home",
         templateUrl: "src/home_feature/home.html"
+      })
+      .state("dashboard", {
+        url: "/dashboard",
+        // controller: "DashController",
+        // controllerAs: "dash",
+        templateUrl: "src/dashboard_feature/dashboard.html"
       })
 
     $urlRouterProvider.otherwise("/");
