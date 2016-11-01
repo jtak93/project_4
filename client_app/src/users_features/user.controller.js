@@ -31,7 +31,9 @@
     function login() {
       UserService.login(vm.username, vm.password)
         .then( () => {
-          vm.isLoggedIn = true
+          vm.isLoggedIn = true;
+          $('#myModal').modal('hide');
+          $state.go('home')
         });
     }
 
@@ -45,7 +47,9 @@
         }
         return UserService.signUp(newUser)
           .then( () => {
-            vm.isLoggedIn = true
+            vm.isLoggedIn = true;
+            $('#myModal').modal('hide');
+            $state.go('home')
           })
       }
       // TODO show user passwords dont match
