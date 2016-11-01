@@ -5,12 +5,12 @@
     .module("app")
     .controller("HomeController", HomeController);
 
-  HomeController.$inject = ["$log", "MatchService", "$scope"];
+  HomeController.$inject = ["$log", "MatchService", "BetService"];
 
-  function HomeController($log, MatchService, $scope) {
+  function HomeController($log, MatchService, BetService) {
     var vm = this;
     vm.all = all();
-    vm.betSlip = [];
+    vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
     vm.risk = 0;
     vm.totalRisk = riskSum;
@@ -28,23 +28,17 @@
         .then( matches => vm.matches = matches.data)
     }
 
+    function getBetSlip() {
+      return BetService.getBetSlip()
+    }
+
     function betTeam1(match) {
-      var team = match.teams[0];
-      var idx = vm.matches.indexOf(match)
-      vm.matches.splice(idx, 1);
-      match.teamPick = team;
-      vm.betSlip.push(match);
-      vm.betSlipIndices.push(idx);
+      return BetService.betTeam1(match);
       // use service to make AJAX to server
     }
 
     function betTeam2(match) {
-      var team = match.teams[1];
-      var idx = vm.matches.indexOf(match)
-      vm.matches.splice(idx, 1);
-      match.teamPick = team;
-      vm.betSlip.push(match);
-      vm.betSlipIndices.push(idx);
+      return BetService.betTeam1(match);
       // use service to make AJAX to server
     }
     function riskSum() {

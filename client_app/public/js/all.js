@@ -130,6 +130,54 @@
 
   angular
     .module("app")
+    .factory("BetService", BetService);
+
+  BetService.$inject = ["$http", "MatchService", "$window", "$log"];
+
+  function BetService($http, MatchService, $window, $log) {
+
+    var betSlip = [];
+    var matches = MatchService.all()
+        .then( matchesRes => matches = matchesRes.data)
+
+    var betService = {
+      getBetSlip: getBetSlip,
+      betTeam1: betTeam1,
+      betTeam2: betTeam2
+    };
+
+    function getBetSlip() {
+      return betSlip
+    }
+
+    function betTeam1(match) {
+      var team = match.teams[0];
+      var idx = matches.indexOf(match)
+      MatchService.removeMatch(idx);
+      match.teamPick = team;
+      betSlip.push(match);
+      // use service to make AJAX to server
+    }
+
+    function betTeam2(match) {
+      var team = match.teams[1];
+      var idx = matches.indexOf(match)
+      MatchService.removeMatch(idx);
+      match.teamPick = team;
+      betSlip.push(match);
+      // use service to make AJAX to server
+    }
+
+    return betService;
+
+  }
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
     .factory("MatchService", MatchService);
 
   MatchService.$inject = ["$http", "AuthTokenService", "$window", "$log"];
@@ -137,9 +185,11 @@
   function MatchService($http, AuthTokenService, $window, $log) {
 
     var baseUrl = 'http://localhost:3000';
+    var allMatches = [];
 
     var service = {
-      all: all
+      all: all,
+      removeMatch: remove
     };
     return service;
 
@@ -147,8 +197,13 @@
       var url = `${baseUrl}/api/matches`
       return $http.get(url)
                   .then((matches) => {
+                    allMatches = matches.data;
                     return matches;
                   });
+    }
+
+    function remove(idx) {
+      allMatches.splice(idx, 1);
     }
   }
 })();
@@ -234,12 +289,12 @@
     .module("app")
     .controller("HomeController", HomeController);
 
-  HomeController.$inject = ["$log", "MatchService", "$scope"];
+  HomeController.$inject = ["$log", "MatchService", "BetService"];
 
-  function HomeController($log, MatchService, $scope) {
+  function HomeController($log, MatchService, BetService) {
     var vm = this;
     vm.all = all();
-    vm.betSlip = [];
+    vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
     vm.risk = 0;
     vm.totalRisk = riskSum;
@@ -257,23 +312,17 @@
         .then( matches => vm.matches = matches.data)
     }
 
+    function getBetSlip() {
+      return BetService.getBetSlip()
+    }
+
     function betTeam1(match) {
-      var team = match.teams[0];
-      var idx = vm.matches.indexOf(match)
-      vm.matches.splice(idx, 1);
-      match.teamPick = team;
-      vm.betSlip.push(match);
-      vm.betSlipIndices.push(idx);
+      return BetService.betTeam1(match);
       // use service to make AJAX to server
     }
 
     function betTeam2(match) {
-      var team = match.teams[1];
-      var idx = vm.matches.indexOf(match)
-      vm.matches.splice(idx, 1);
-      match.teamPick = team;
-      vm.betSlip.push(match);
-      vm.betSlipIndices.push(idx);
+      return BetService.betTeam1(match);
       // use service to make AJAX to server
     }
     function riskSum() {
