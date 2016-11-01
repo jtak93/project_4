@@ -11,7 +11,7 @@ require('dotenv').config();
 var db = require('./config/db')
 
 var users = require('./routes/users');
-var matches = require('./api/routes/matches');
+var matches = require('./routes/api/matches');
 
 var app = express();
 
