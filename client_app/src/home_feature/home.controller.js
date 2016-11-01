@@ -12,7 +12,7 @@
     vm.all = all();
     vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
-    vm.risk = 0;
+    vm.risks = [];
     vm.totalRisk = riskSum;
 
     vm.betTeam1 = betTeam1;
@@ -34,20 +34,24 @@
     }
 
     function betTeam1(match) {
+      vm.risks.push(null);
       return BetService.betTeam1(match);
       // use service to make AJAX to server
     }
 
     function betTeam2(match) {
+      vm.risks.push(null);
       return BetService.betTeam1(match);
       // use service to make AJAX to server
     }
     function riskSum() {
-      // var sum = 0;
-      // vm.risks.forEach(risk => {
-      //   sum += risk;
-      // })
-      return vm.risk;
+      var sum = 0;
+      vm.risks.forEach(risk => {
+        if (risk){
+          sum += risk;
+        }
+      })
+      return sum;
     }
 
     function placeBet() {
@@ -57,6 +61,7 @@
     function clearBetSlip() {
       console.log("clicked clear BS")
       BetService.clearBetSlip();
+      vm.risks = [];
       vm.betSlip = getBetSlip();
       vm.all = all();
       return vm.betSlip;

@@ -59,13 +59,12 @@
           PICK: {{bet.teamPick}}
         </div>
         <label class="control-label" for="Risk">Risk:</label>
-        <input ng-model="home.risk" type="number">
+        <input ng-model="home.risks[$index]" type="number">
       </div>
       <div>
         <div>
           TOTAL RISK: {{home.totalRisk()}}
         </div>
-        <button ng-click="home.test()">TEST</button>
         <button ng-click="home.placeBet()" class="btn btn-success">Place Bets</button>
         <button ng-click="home.clearBetSlip()" class="btn btn-danger">Remove Bets</button>
       </div>
