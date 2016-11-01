@@ -364,7 +364,7 @@
         var token = AuthTokenService.getToken();
         vm.isLoggedIn = true;
         var user = decode(token);
-        vm.username = user.username;
+        vm.user = user;
       } else {
         vm.isLoggedIn = false;
       }

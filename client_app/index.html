@@ -37,8 +37,9 @@
           <li class=""><a href="#">About</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li ng-if="user.isLoggedIn"><a href="#">Balance: {{user.user.balance}}</a></li>
           <li ng-if="!user.isLoggedIn"><button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Log In/Register</button></li>
-          <li ng-if="user.isLoggedIn"><a href="#">Welcome, {{user.username}}</a></li>
+          <li ng-if="user.isLoggedIn"><a href="#">Welcome, {{user.user.username}}</a></li>
           <li ng-if="user.isLoggedIn"><button ng-click="user.logout()" class="btn btn-primary btn-lg">Log Out</button></li>
         </ul>
       </div><!-- /.navbar-collapse -->
