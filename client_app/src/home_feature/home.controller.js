@@ -13,6 +13,7 @@
     vm.bets = [];
     vm.betTeam1 = betTeam1;
     vm.betTeam2 = betTeam2;
+    vm.betSlipIndices = []
 
     function all() {
       vm.matches = MatchService.all()
@@ -20,13 +21,19 @@
     }
 
     function betTeam1(match) {
-      $log.info(match)
-      vm.bets.push(match)
+      // TODO: store team 1
+      var idx = vm.matches.indexOf(match)
+      vm.matches.splice(idx, 1);
+      vm.bets.push(match);
+      vm.betSlipIndices.push(idx);
     }
 
     function betTeam2(match) {
-      $log.info(match)
-      vm.bets.push(match)
+      // TODO: store team 2
+      var idx = vm.matches.indexOf(match)
+      vm.matches.splice(idx, 1);
+      vm.bets.push(match);
+      vm.betSlipIndices.push(idx);
     }
   }
 
