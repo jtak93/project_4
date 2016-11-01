@@ -148,23 +148,19 @@
     };
 
     function getBetSlip() {
-      return betSlip
+      return betSlip;
     }
 
     function betTeam1(match) {
-      var team = match.teams[0];
-      var idx = matches.indexOf(match)
-      MatchService.removeMatch(idx);
-      match.teamPick = team;
+      match.teamPick = match.teams[0];
       betSlip.push(match);
+      console.log(betSlip)
       // use service to make AJAX to server
     }
 
     function betTeam2(match) {
-      var team = match.teams[1];
-      var idx = matches.indexOf(match)
-      MatchService.removeMatch(idx);
-      match.teamPick = team;
+      console.log(match.teams[1])
+      match.teamPick = match.teams[1];
       betSlip.push(match);
       // use service to make AJAX to server
     }
@@ -299,7 +295,8 @@
 
   function HomeController($log, MatchService, BetService) {
     var vm = this;
-    vm.all = all();
+    vm.matches = MatchService.all()
+      .then( matches => vm.matches = matches.data)
     vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
     vm.risks = [];
@@ -309,15 +306,6 @@
     vm.betTeam2 = betTeam2;
     vm.placeBet = placeBet;
     vm.clearBetSlip = clearBetSlip;
-    vm.test = function() {
-      console.log(vm.risk)
-    }
-
-
-    function all() {
-      vm.matches = MatchService.all()
-        .then( matches => vm.matches = matches.data)
-    }
 
     function getBetSlip() {
       return BetService.getBetSlip()
@@ -325,13 +313,17 @@
 
     function betTeam1(match) {
       vm.risks.push(null);
+      var idx = vm.matches.indexOf(match)
+      MatchService.removeMatch(idx);
       return BetService.betTeam1(match);
       // use service to make AJAX to server
     }
 
     function betTeam2(match) {
       vm.risks.push(null);
-      return BetService.betTeam1(match);
+      var idx = vm.matches.indexOf(match)
+      MatchService.removeMatch(idx);
+      return BetService.betTeam2(match);
       // use service to make AJAX to server
     }
     function riskSum() {
@@ -350,6 +342,8 @@
 
     function clearBetSlip() {
       console.log("clicked clear BS")
+      MatchService.all()
+              .then( matchesRes => vm.matches = matchesRes.data)
       BetService.clearBetSlip();
       vm.risks = [];
       vm.betSlip = getBetSlip();

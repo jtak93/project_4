@@ -21,23 +21,19 @@
     };
 
     function getBetSlip() {
-      return betSlip
+      return betSlip;
     }
 
     function betTeam1(match) {
-      var team = match.teams[0];
-      var idx = matches.indexOf(match)
-      MatchService.removeMatch(idx);
-      match.teamPick = team;
+      match.teamPick = match.teams[0];
       betSlip.push(match);
+      console.log(betSlip)
       // use service to make AJAX to server
     }
 
     function betTeam2(match) {
-      var team = match.teams[1];
-      var idx = matches.indexOf(match)
-      MatchService.removeMatch(idx);
-      match.teamPick = team;
+      console.log(match.teams[1])
+      match.teamPick = match.teams[1];
       betSlip.push(match);
       // use service to make AJAX to server
     }
