@@ -241,9 +241,13 @@
     var vm = this;
     vm.all = all();
     vm.bets = [];
+    vm.betSlipIndices = [];
+    vm.risks = [];
+    vm.totalRisk = riskSum;
+
     vm.betTeam1 = betTeam1;
     vm.betTeam2 = betTeam2;
-    vm.betSlipIndices = []
+    vm.placeBet = placeBet;
 
     function all() {
       vm.matches = MatchService.all()
@@ -251,19 +255,36 @@
     }
 
     function betTeam1(match) {
-      // TODO: store team 1
+      var team = match.teams[0];
       var idx = vm.matches.indexOf(match)
       vm.matches.splice(idx, 1);
+      match.teamPick = team;
       vm.bets.push(match);
+      vm.risks.push(null)
       vm.betSlipIndices.push(idx);
+      // use service to make AJAX to server
     }
 
     function betTeam2(match) {
-      // TODO: store team 2
+      var team = match.teams[1];
       var idx = vm.matches.indexOf(match)
       vm.matches.splice(idx, 1);
+      match.teamPick = team;
       vm.bets.push(match);
+      vm.risks.push(null)
       vm.betSlipIndices.push(idx);
+      // use service to make AJAX to server
+    }
+    function riskSum() {
+      var sum = 0;
+      vm.risks.forEach(risk => {
+        sum += risk;
+      })
+      return sum;
+    }
+
+    function placeBet() {
+      console.log(vm.bets);
     }
   }
 
