@@ -143,7 +143,8 @@
     var betService = {
       getBetSlip: getBetSlip,
       betTeam1: betTeam1,
-      betTeam2: betTeam2
+      betTeam2: betTeam2,
+      clearBetSlip: clearBetSlip
     };
 
     function getBetSlip() {
@@ -166,6 +167,11 @@
       match.teamPick = team;
       betSlip.push(match);
       // use service to make AJAX to server
+    }
+
+    function clearBetSlip() {
+      console.log('clear BS')
+      betSlip = [];
     }
 
     return betService;
@@ -302,6 +308,7 @@
     vm.betTeam1 = betTeam1;
     vm.betTeam2 = betTeam2;
     vm.placeBet = placeBet;
+    vm.clearBetSlip = clearBetSlip;
     vm.test = function() {
       console.log(vm.risk)
     }
@@ -335,6 +342,14 @@
 
     function placeBet() {
       console.log(vm.bets);
+    }
+
+    function clearBetSlip() {
+      console.log("clicked clear BS")
+      BetService.clearBetSlip();
+      vm.betSlip = getBetSlip();
+      vm.all = all();
+      return vm.betSlip;
     }
   }
 

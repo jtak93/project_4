@@ -18,6 +18,7 @@
     vm.betTeam1 = betTeam1;
     vm.betTeam2 = betTeam2;
     vm.placeBet = placeBet;
+    vm.clearBetSlip = clearBetSlip;
     vm.test = function() {
       console.log(vm.risk)
     }
@@ -51,6 +52,14 @@
 
     function placeBet() {
       console.log(vm.bets);
+    }
+
+    function clearBetSlip() {
+      console.log("clicked clear BS")
+      BetService.clearBetSlip();
+      vm.betSlip = getBetSlip();
+      vm.all = all();
+      return vm.betSlip;
     }
   }
 

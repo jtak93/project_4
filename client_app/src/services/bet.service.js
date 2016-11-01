@@ -16,7 +16,8 @@
     var betService = {
       getBetSlip: getBetSlip,
       betTeam1: betTeam1,
-      betTeam2: betTeam2
+      betTeam2: betTeam2,
+      clearBetSlip: clearBetSlip
     };
 
     function getBetSlip() {
@@ -39,6 +40,11 @@
       match.teamPick = team;
       betSlip.push(match);
       // use service to make AJAX to server
+    }
+
+    function clearBetSlip() {
+      console.log('clear BS')
+      betSlip = [];
     }
 
     return betService;
