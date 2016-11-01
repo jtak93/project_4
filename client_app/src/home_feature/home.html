@@ -5,7 +5,7 @@
       <h1> SHOW MATCHES </h1>
       <div class="container-fluid matches">
         <div class="row" ng-repeat="match in home.matches track by match._id">
-          <div class="col-sm-12">
+          <div class="col-sm-8">
             <div class="container-fluid">
 
               <div class="row tournament-name">
@@ -43,25 +43,28 @@
         </div> <!-- closes ng-repeat -->
       </div> <!-- closes matches -->
     </div>
-
-    <div ng-if="user.isLoggedIn" class="col-sm-2 bet slip">
-      BETSLIP
-      <div class="container">
-        <div ng-repeat="bet in home.bets" class="row">
-          <!-- TODO: MAKE A FORM -->
-          <div class="row">
-            Game: {{bet.game}}
-          </div>
-          <div class="row">
-            {{bet.teams[0]}} vs. {{bet.teams[1]}}
-          </div>
-          <div class="row">
-            PUT TEAM NAME FOR BET
-          </div>
-          <label class="control-label" for="Risk">Risk:</label>
-          <input type="number">
-        </div>
+    <div ng-if="user.isLoggedIn" class="col-sm-2 bet-slip container">
+      <div class="">
+        BETSLIP
       </div>
-    </div>
+      <div ng-repeat="bet in home.bets" class="">
+        <!-- TODO: MAKE A FORM -->
+        <div>
+          <button>X</button>Game: {{bet.game}}
+        </div>
+        <div>
+          {{bet.teams[0]}} vs. {{bet.teams[1]}}
+        </div>
+        <div>
+          PUT TEAM NAME FOR BET
+        </div>
+        <label class="control-label" for="Risk">Risk:</label>
+        <input type="number">
+      </div>
+      <div>
+        <button class="btn btn-success">Place Bets</button>
+        <button class="btn btn-danger">Remove Bets</button>
+      </div>
+    </div> <!-- closes bet-slip -->
   </div>
 </div>
