@@ -32,8 +32,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li class="active"><a href="#">Link</a></li>
+        <li class=""><a href="#">Dashboard</a></li>
+        <li class=""><a href="#">Shop</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="!user.isLoggedIn"><button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Log In/Register</button></li>
@@ -55,6 +55,7 @@
 
   </footer>
   <!-- LOGIN/SIGNUP MODAL -->
+  <!-- TODO: THIS NEEDS TO BE MOVED TO SEPARATE FILE AND LOADED IN -->
   <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
