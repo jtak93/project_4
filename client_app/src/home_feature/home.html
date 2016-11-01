@@ -49,9 +49,17 @@
       <div class="container">
         <div ng-repeat="bet in home.bets" class="row">
           <!-- TODO: MAKE A FORM -->
-          {{bet.game}}
-          {{bet.teams[0]}}
-          {{bet.teams[1]}}
+          <div class="row">
+            Game: {{bet.game}}
+          </div>
+          <div class="row">
+            {{bet.teams[0]}} vs. {{bet.teams[1]}}
+          </div>
+          <div class="row">
+            PUT TEAM NAME FOR BET
+          </div>
+          <label class="control-label" for="Risk">Risk:</label>
+          <input type="number">
         </div>
       </div>
     </div>

@@ -26,7 +26,6 @@
       } else {
         vm.isLoggedIn = false;
       }
-
     }
 
     function login() {

@@ -240,7 +240,7 @@
     vm.betTeam2 = betTeam2;
 
     function all() {
-      MatchService.all()
+      vm.matches = MatchService.all()
         .then( matches => vm.matches = matches.data)
     }
 
@@ -285,7 +285,6 @@
       } else {
         vm.isLoggedIn = false;
       }
-
     }
 
     function login() {
