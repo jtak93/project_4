@@ -337,7 +337,7 @@
     }
 
     function placeBet() {
-      console.log(vm.bets);
+      BetService.placeBet(vm.betSlip)
     }
 
     function clearBetSlip() {
@@ -347,7 +347,6 @@
       BetService.clearBetSlip();
       vm.risks = [];
       vm.betSlip = getBetSlip();
-      vm.all = all();
       return vm.betSlip;
     }
   }
