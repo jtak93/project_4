@@ -38,11 +38,11 @@
       return $http.post(url, user)
                   .then((response) => {
                     console.log(response)
-                    // var token = response.data.token;
-                    // AuthTokenService.setToken(token);
-                    // user = decode(token);
-                    // console.log(user)
-                    // return user;
+                    var token = response.data.token;
+                    AuthTokenService.setToken(token);
+                    user = decode(token);
+                    console.log(user)
+                    return user;
                   });
     }
 

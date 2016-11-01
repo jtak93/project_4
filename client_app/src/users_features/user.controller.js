@@ -34,6 +34,7 @@
           vm.isLoggedIn = true;
           $('#myModal').modal('hide');
           $state.go('home')
+          checkLoggedIn();
         });
     }
 
@@ -50,6 +51,7 @@
             vm.isLoggedIn = true;
             $('#myModal').modal('hide');
             $state.go('home')
+            checkLoggedIn();
           })
       }
       // TODO show user passwords dont match
