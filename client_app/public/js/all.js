@@ -213,12 +213,8 @@
       var url = `${baseUrl}/api/matches`
       return $http.get(url)
                   .then((matches) => {
+                    // matches have virtual odds property
                     allMatches = matches.data;
-
-console.log('odds', allMatches[0].odds)
-console.log('matches', allMatches)
-
-
                     return matches;
                   });
     }
