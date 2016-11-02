@@ -48,9 +48,15 @@
     function placeBet(betSlip, risks, user) {
       var url = `${baseUrl}/bets/create`
       return $http.post(url, {betSlip, risks, user})
-                  .then((response) => {
-                    console.log("bets placed:", response)
+                  .then((res) => {
+                    var token = res.data.token;
+                    var user = decode(token).user
+                    return user
                   });
+    }
+
+    function decode(token) {
+      return JSON.parse($window.atob(token.split('.')[1]));
     }
 
     return betService;

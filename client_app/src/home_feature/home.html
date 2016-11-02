@@ -61,7 +61,7 @@
         <label class="control-label" for="Risk">Risk:</label>
         <input ng-model="home.risks[$index]" type="number">
       </div>
-      <div>
+      <div ng-if="home.risks.length > 0">
         <div>
           TOTAL RISK: {{home.totalRisk()}}
         </div>

@@ -48,7 +48,18 @@ function create(req, res, next) {
     });
 }
 
+function passUser(req, res, next) {
+  User.findOne({username: req.body.user.username})
+    .then((user) => {
+      var token = jwt.sign({ user: user }, secret, jwtOptions);
+      return res.json({
+        token: token
+      });
+    });
+}
+
 module.exports = {
   create:        create,
-  authenticate:  authenticate
+  authenticate:  authenticate,
+  passUser: passUser
 };

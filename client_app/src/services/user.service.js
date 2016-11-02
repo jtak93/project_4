@@ -14,11 +14,22 @@
     var user = null;
 
     var service = {
+      getUser: getUser,
+      setUser: setUser,
       login: login,
       signUp: signUp,
       logout: logout
     };
     return service;
+
+    function getUser() {
+      return user;
+    }
+
+    function setUser(updatedUser) {
+      user = updatedUser;
+      return user
+    }
 
     function login(username, password) {
       var url = `${baseUrl}/login`

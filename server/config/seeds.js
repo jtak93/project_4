@@ -16,7 +16,7 @@ var users = [
   }
 ];
 
-var matches = [
+var matchOne =
   {
     game: 'CSGO',
     tournament: 'ESL One',
@@ -27,19 +27,21 @@ var matches = [
     active: true,
     result: null,
     bets: []
-  },
+  }
+
+var matchTwo =
   {
-    game: 'CSGO',
+    game: 'DOTA 2',
     tournament: 'ESL Two',
     date: Date.now(),
     teams: ['t1', 't2'],
     t1bet: 0,
     t2bet: 0,
     active: false,
-    result: 2,
+    result: null,
     bets: []
   }
-];
+
 
 Match
   .remove({})
@@ -49,43 +51,46 @@ Match
       console.log('Emptying and seeding database...');
       return User.create(users);
     })
-    .then((users) => {
-      // console.log(users)
-      users.forEach(user => {
-        // console.log(user)
-        var newBet = {
-          matchId: null,
-          userId: user._id,
-          risk: 1000
-        };
-        user.bets.push(newBet);
-        user.save( err => {
-          console.log(`Seeded bet in user ${user}`);
-          return user;
-        });
-      });
-      return users;
+    // .then((users) => {
+    //   // console.log(users)
+    //   users.forEach(user => {
+    //     // console.log(user)
+    //     var newBet = {
+    //       matchId: null,
+    //       userId: user._id,
+    //       risk: 1000
+    //     };
+    //     user.bets.push(newBet);
+    //     user.save( err => {
+    //       console.log(`Seeded bet in user ${user}`);
+    //       return user;
+    //     });
+    //   });
+    //   return users;
+    // })
+    .then( () => {
+      console.log("create match 1")
+      return Match.create(matchOne);
     })
     .then( () => {
-      console.log("create matches")
-      return Match.create(matches);
+      console.log("create match 2")
+      return Match.create(matchTwo);
     })
-    .then( matches => {
-      console.log("matches need saving")
-      matches.forEach( match => {
-        var newBet = {
-          matchId: match._id,
-          userId: null,
-          risk: 1000
-        };
-        match.bets.push(newBet);
-        match.save( err => {
-          console.log(`Seeded ${matches.length} matches`);
-        })
-      })
-    })
+    // .then( matches => {
+    //   console.log("matches need saving")
+    //   matches.forEach( match => {
+    //     var newBet = {
+    //       matchId: match._id,
+    //       userId: null,
+    //       risk: 1000
+    //     };
+    //     match.bets.push(newBet);
+    //     match.save( err => {
+    //       console.log(`Seeded ${matches.length} matches`);
+    //     })
+    //   })
+    // })
     .then( () => {
-      mongoose.connection.close();
       process.exit();
     });
   })

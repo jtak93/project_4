@@ -18,11 +18,7 @@ var MatchSchema = new mongoose.Schema({
   t1bet: Number,
   t2bet: Number,
   active: Boolean,
-  result: {
-    type: Number,
-    // null means not done, 0 tie, 1 team 1 wins, 2 team 2 wins
-    enum: [0, 1, 2]
-  },
+  result: Number,
   bets: [betSchema]
 });
 

@@ -175,9 +175,15 @@
     function placeBet(betSlip, risks, user) {
       var url = `${baseUrl}/bets/create`
       return $http.post(url, {betSlip, risks, user})
-                  .then((response) => {
-                    console.log("bets placed:", response)
+                  .then((res) => {
+                    var token = res.data.token;
+                    var user = decode(token).user
+                    return user
                   });
+    }
+
+    function decode(token) {
+      return JSON.parse($window.atob(token.split('.')[1]));
     }
 
     return betService;
@@ -236,11 +242,22 @@
     var user = null;
 
     var service = {
+      getUser: getUser,
+      setUser: setUser,
       login: login,
       signUp: signUp,
       logout: logout
     };
     return service;
+
+    function getUser() {
+      return user;
+    }
+
+    function setUser(updatedUser) {
+      user = updatedUser;
+      return user
+    }
 
     function login(username, password) {
       var url = `${baseUrl}/login`
@@ -301,9 +318,9 @@
     .module("app")
     .controller("HomeController", HomeController);
 
-  HomeController.$inject = ["$log", "MatchService", "BetService"];
+  HomeController.$inject = ["$log", "MatchService", "BetService", "UserService"];
 
-  function HomeController($log, MatchService, BetService) {
+  function HomeController($log, MatchService, BetService, UserService) {
     var vm = this;
     vm.matches = MatchService.all()
       .then( matches => vm.matches = matches.data)
@@ -348,8 +365,8 @@
 
     function placeBet(user) {
       BetService.placeBet(vm.betSlip, vm.risks, user)
-        .then(() => {
-
+        .then((user) => {
+          UserService.setUser(user);
           clearBetSlip();
         })
     }

@@ -19,11 +19,13 @@ function create(req, res, next) {
         user.bets.push(newBet);
         user.balance -= risks[idx];
         user.inPlay += risks[idx];
-        user.save((err, user) => user)
+        user.save((err, user) => {
+          console.log(user);
+          return user;
+        })
+        .then(() => next())
       })
   })
-  var x = req.body
-  res.json({user})
 }
 
 module.exports = {
