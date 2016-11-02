@@ -348,7 +348,10 @@
 
     function placeBet(user) {
       BetService.placeBet(vm.betSlip, vm.risks, user)
-        .then(() => clearBetSlip())
+        .then(() => {
+
+          clearBetSlip();
+        })
     }
 
     function clearBetSlip() {
