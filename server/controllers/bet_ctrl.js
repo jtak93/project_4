@@ -21,8 +21,15 @@ function create(req, res, next) {
         user.inPlay += risks[idx];
         user.save((err, user) => {
           console.log(user);
-          return user;        })
-        .then(() => next())
+          Match.findOne( {_id: bet._id} )
+            .then(match => {
+              match.bets.push(newBet);
+              match.save(err => {
+                if (err) return err
+                next();
+              })
+            })
+        })
       })
   })
 }
