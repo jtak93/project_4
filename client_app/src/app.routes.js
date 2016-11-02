@@ -17,8 +17,8 @@
       })
       .state("dashboard", {
         url: "/dashboard",
-        // controller: "DashController",
-        // controllerAs: "dash",
+        controller: "DashboardCtrl",
+        controllerAs: "dash",
         templateUrl: "src/dashboard_feature/dashboard.html"
       })
 

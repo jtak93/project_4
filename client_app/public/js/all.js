@@ -24,8 +24,8 @@
       })
       .state("dashboard", {
         url: "/dashboard",
-        // controller: "DashController",
-        // controllerAs: "dash",
+        controller: "DashboardCtrl",
+        controllerAs: "dash",
         templateUrl: "src/dashboard_feature/dashboard.html"
       })
 
@@ -307,6 +307,41 @@
 
   function MainController($log) {
     var vm = this;
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
+    .controller("DashboardCtrl", DashboardCtrl);
+
+  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
+
+  function DashboardCtrl($log, MatchService, BetService, UserService) {
+    var vm = this;
+    vm.tabs = [{
+            title: 'One',
+            url: 'one.tpl.html'
+        }, {
+            title: 'Two',
+            url: 'two.tpl.html'
+        }, {
+            title: 'Three',
+            url: 'three.tpl.html'
+    }];
+
+    vm.currentTab = 'one.tpl.html';
+
+    vm.onClickTab = function (tab) {
+        vm.currentTab = tab.url;
+    }
+
+    vm.isActiveTab = function(tabUrl) {
+        return tabUrl == vm.currentTab;
+    }
   }
 
 })();
