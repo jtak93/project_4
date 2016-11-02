@@ -14,6 +14,7 @@
     vm.logout = logout;
     vm.noMatch = null;
     vm.isLoggedIn = null;
+    vm.userService = UserService;
 
     checkLoggedIn();
     // check if logged in

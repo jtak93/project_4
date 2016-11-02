@@ -132,9 +132,9 @@
     .module("app")
     .factory("BetService", BetService);
 
-  BetService.$inject = ["$http", "MatchService", "$window", "$log"];
+  BetService.$inject = ["$http", "MatchService", "$window", "$log", "UserService"];
 
-  function BetService($http, MatchService, $window, $log) {
+  function BetService($http, MatchService, $window, $log, UserService) {
 
     var baseUrl = 'http://localhost:3000';
     var betSlip = [];
@@ -176,9 +176,7 @@
       var url = `${baseUrl}/bets/create`
       return $http.post(url, {betSlip, risks, user})
                   .then((res) => {
-                    var token = res.data.token;
-                    var user = decode(token).user
-                    return user
+                    return res.data.token;
                   });
     }
 
@@ -216,6 +214,11 @@
       return $http.get(url)
                   .then((matches) => {
                     allMatches = matches.data;
+
+console.log('odds', allMatches[0].odds)
+console.log('matches', allMatches)
+
+
                     return matches;
                   });
     }
@@ -254,9 +257,10 @@
       return user;
     }
 
-    function setUser(updatedUser) {
-      user = updatedUser;
-      return user
+    function setUser(token) {
+      AuthTokenService.setToken(token);
+      user = decode(token);
+      return user;
     }
 
     function login(username, password) {
@@ -316,41 +320,6 @@
 
   angular
     .module("app")
-    .controller("DashboardCtrl", DashboardCtrl);
-
-  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
-
-  function DashboardCtrl($log, MatchService, BetService, UserService) {
-    var vm = this;
-    vm.tabs = [{
-            title: 'One',
-            url: 'one.tpl.html'
-        }, {
-            title: 'Two',
-            url: 'two.tpl.html'
-        }, {
-            title: 'Three',
-            url: 'three.tpl.html'
-    }];
-
-    vm.currentTab = 'one.tpl.html';
-
-    vm.onClickTab = function (tab) {
-        vm.currentTab = tab.url;
-    }
-
-    vm.isActiveTab = function(tabUrl) {
-        return tabUrl == vm.currentTab;
-    }
-  }
-
-})();
-
-(function() {
-  "use strict";
-
-  angular
-    .module("app")
     .controller("HomeController", HomeController);
 
   HomeController.$inject = ["$log", "MatchService", "BetService", "UserService"];
@@ -400,8 +369,8 @@
 
     function placeBet(user) {
       BetService.placeBet(vm.betSlip, vm.risks, user)
-        .then((user) => {
-          UserService.setUser(user);
+        .then((token) => {
+          UserService.setUser(token);
           clearBetSlip();
         })
     }
@@ -424,6 +393,41 @@
 
   angular
     .module("app")
+    .controller("DashboardCtrl", DashboardCtrl);
+
+  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
+
+  function DashboardCtrl($log, MatchService, BetService, UserService) {
+    var vm = this;
+    vm.tabs = [{
+            title: 'Test',
+            url: 'one.tpl.html'
+        }, {
+            title: 'My Bets',
+            url: 'two.tpl.html'
+        }, {
+            title: 'WHAT',
+            url: 'three.tpl.html'
+    }];
+
+    vm.currentTab = 'one.tpl.html';
+
+    vm.onClickTab = function (tab) {
+        vm.currentTab = tab.url;
+    }
+
+    vm.isActiveTab = function(tabUrl) {
+        return tabUrl == vm.currentTab;
+    }
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
     .controller("UserController", UserController);
 
   UserController.$inject = ["$log", "UserService", "$state", "AuthTokenService", "$window"];
@@ -435,6 +439,7 @@
     vm.logout = logout;
     vm.noMatch = null;
     vm.isLoggedIn = null;
+    vm.userService = UserService;
 
     checkLoggedIn();
     // check if logged in

@@ -5,9 +5,9 @@
     .module("app")
     .factory("BetService", BetService);
 
-  BetService.$inject = ["$http", "MatchService", "$window", "$log"];
+  BetService.$inject = ["$http", "MatchService", "$window", "$log", "UserService"];
 
-  function BetService($http, MatchService, $window, $log) {
+  function BetService($http, MatchService, $window, $log, UserService) {
 
     var baseUrl = 'http://localhost:3000';
     var betSlip = [];
@@ -49,9 +49,7 @@
       var url = `${baseUrl}/bets/create`
       return $http.post(url, {betSlip, risks, user})
                   .then((res) => {
-                    var token = res.data.token;
-                    var user = decode(token).user
-                    return user
+                    return res.data.token;
                   });
     }
 

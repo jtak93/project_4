@@ -21,8 +21,7 @@ function create(req, res, next) {
         user.inPlay += risks[idx];
         user.save((err, user) => {
           console.log(user);
-          return user;
-        })
+          return user;        })
         .then(() => next())
       })
   })

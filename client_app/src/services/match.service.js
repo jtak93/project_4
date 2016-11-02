@@ -23,6 +23,11 @@
       return $http.get(url)
                   .then((matches) => {
                     allMatches = matches.data;
+
+console.log('odds', allMatches[0].odds)
+console.log('matches', allMatches)
+
+
                     return matches;
                   });
     }

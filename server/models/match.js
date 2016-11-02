@@ -10,7 +10,7 @@ var betSchema = new mongoose.Schema({
 });
 
 // TODO: validations
-var MatchSchema = new mongoose.Schema({
+var matchSchema = new mongoose.Schema({
   game: String,
   tournament: String,
   date: Date,
@@ -22,7 +22,15 @@ var MatchSchema = new mongoose.Schema({
   bets: [betSchema]
 });
 
-var Match = mongoose.model('Match', MatchSchema);
+matchSchema.virtual('odds').get(() => {
+  return 2;
+  // 'this' represents the match document
+  // this.t1bet...
+});
+
+matchSchema.set('toJSON', {virtuals: true});
+
+var Match = mongoose.model('Match', matchSchema);
 
 module.exports = Match;
 

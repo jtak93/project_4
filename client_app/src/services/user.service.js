@@ -26,9 +26,10 @@
       return user;
     }
 
-    function setUser(updatedUser) {
-      user = updatedUser;
-      return user
+    function setUser(token) {
+      AuthTokenService.setToken(token);
+      user = decode(token);
+      return user;
     }
 
     function login(username, password) {
