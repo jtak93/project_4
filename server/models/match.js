@@ -23,12 +23,20 @@ var matchSchema = new mongoose.Schema({
 });
 
 matchSchema.virtual('odds').get(() => {
+  var total = this.t1bet + this.t2bet
+  var num = parse(total);
   return 2;
+  // if (total < 1000) {
+  //   return 1
+  // } else {
+  //   return num;
+  // }
   // 'this' represents the match document
   // this.t1bet...
 });
 
 matchSchema.set('toJSON', {virtuals: true});
+matchSchema.set('toObject', { virtuals: true });
 
 var Match = mongoose.model('Match', matchSchema);
 
