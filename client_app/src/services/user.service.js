@@ -18,9 +18,18 @@
       setUser: setUser,
       login: login,
       signUp: signUp,
-      logout: logout
+      logout: logout,
+      checkLoggedIn: checkLoggedIn
     };
     return service;
+
+    function checkLoggedIn() {
+      if (AuthTokenService.getToken()) {
+        var token = AuthTokenService.getToken();
+        var logUser = decode(token);
+        user = logUser;
+      }
+    }
 
     function getUser() {
       return user;

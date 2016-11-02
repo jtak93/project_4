@@ -245,9 +245,18 @@
       setUser: setUser,
       login: login,
       signUp: signUp,
-      logout: logout
+      logout: logout,
+      checkLoggedIn: checkLoggedIn
     };
     return service;
+
+    function checkLoggedIn() {
+      if (AuthTokenService.getToken()) {
+        var token = AuthTokenService.getToken();
+        var logUser = decode(token);
+        user = logUser;
+      }
+    }
 
     function getUser() {
       return user;
@@ -307,6 +316,41 @@
 
   function MainController($log) {
     var vm = this;
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
+    .controller("DashboardCtrl", DashboardCtrl);
+
+  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
+
+  function DashboardCtrl($log, MatchService, BetService, UserService) {
+    var vm = this;
+    vm.tabs = [{
+            title: 'Test',
+            url: 'one.tpl.html'
+        }, {
+            title: 'My Bets',
+            url: 'two.tpl.html'
+        }, {
+            title: 'WHAT',
+            url: 'three.tpl.html'
+    }];
+
+    vm.currentTab = 'one.tpl.html';
+
+    vm.onClickTab = function (tab) {
+        vm.currentTab = tab.url;
+    }
+
+    vm.isActiveTab = function(tabUrl) {
+        return tabUrl == vm.currentTab;
+    }
   }
 
 })();
@@ -389,41 +433,6 @@
 
   angular
     .module("app")
-    .controller("DashboardCtrl", DashboardCtrl);
-
-  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
-
-  function DashboardCtrl($log, MatchService, BetService, UserService) {
-    var vm = this;
-    vm.tabs = [{
-            title: 'Test',
-            url: 'one.tpl.html'
-        }, {
-            title: 'My Bets',
-            url: 'two.tpl.html'
-        }, {
-            title: 'WHAT',
-            url: 'three.tpl.html'
-    }];
-
-    vm.currentTab = 'one.tpl.html';
-
-    vm.onClickTab = function (tab) {
-        vm.currentTab = tab.url;
-    }
-
-    vm.isActiveTab = function(tabUrl) {
-        return tabUrl == vm.currentTab;
-    }
-  }
-
-})();
-
-(function() {
-  "use strict";
-
-  angular
-    .module("app")
     .controller("UserController", UserController);
 
   UserController.$inject = ["$log", "UserService", "$state", "AuthTokenService", "$window"];
@@ -436,18 +445,17 @@
     vm.noMatch = null;
     vm.isLoggedIn = null;
     vm.userService = UserService;
+    vm.getUser = getUser;
 
     checkLoggedIn();
     // check if logged in
+    function getUser() {
+      return UserService.getUser();
+    }
     function checkLoggedIn() {
-      if (AuthTokenService.getToken()) {
-        var token = AuthTokenService.getToken();
-        vm.isLoggedIn = true;
-        var user = decode(token);
-        vm.user = user;
-      } else {
-        vm.isLoggedIn = false;
-      }
+      UserService.checkLoggedIn();
+      vm.isLoggedIn = true;
+      vm.user = getUser();
     }
 
     function login() {
