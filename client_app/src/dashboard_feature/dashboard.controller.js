@@ -10,13 +10,13 @@
   function DashboardCtrl($log, MatchService, BetService, UserService) {
     var vm = this;
     vm.tabs = [{
-            title: 'Test',
+            title: 'Profile',
             url: 'one.tpl.html'
         }, {
             title: 'My Bets',
             url: 'two.tpl.html'
         }, {
-            title: 'WHAT',
+            title: 'Past Bets',
             url: 'three.tpl.html'
     }];
 
