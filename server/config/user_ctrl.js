@@ -1,6 +1,7 @@
 var User = require('../models/user');
 
 function createUser(req, res, next) {
+  // TODO: HANDLE ERR
   console.log(req.body);
   var user = {
     username: req.body.username,

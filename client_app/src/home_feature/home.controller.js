@@ -50,8 +50,9 @@
       return sum;
     }
 
-    function placeBet() {
-      BetService.placeBet(vm.betSlip, vm.risks)
+    function placeBet(user) {
+      BetService.placeBet(vm.betSlip, vm.risks, user)
+        .then(() => clearBetSlip())
     }
 
     function clearBetSlip() {

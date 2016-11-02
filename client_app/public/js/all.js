@@ -172,11 +172,11 @@
       betSlip = [];
     }
 
-    function placeBet(betSlip, risks) {
+    function placeBet(betSlip, risks, user) {
       var url = `${baseUrl}/bets/create`
-      return $http.post(url, {betSlip, risks})
+      return $http.post(url, {betSlip, risks, user})
                   .then((response) => {
-                    console.log(response)
+                    console.log("bets placed:", response)
                   });
     }
 
@@ -346,8 +346,9 @@
       return sum;
     }
 
-    function placeBet() {
-      BetService.placeBet(vm.betSlip, vm.risks)
+    function placeBet(user) {
+      BetService.placeBet(vm.betSlip, vm.risks, user)
+        .then(() => clearBetSlip())
     }
 
     function clearBetSlip() {

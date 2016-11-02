@@ -3,9 +3,35 @@ var Match = require('../models/match');
 var Bet = require('../models/bet');
 
 function create(req, res, next) {
-  res.json({msg: req.body})
+  // TODO: HANDLE ERROR
+  var betSlip = req.body.betSlip;
+  var risks = req.body.risks;
+  var user = req.body.user;
+  betSlip.forEach( (bet, idx) => {
+    var newBet = {
+      matchId: bet._id,
+      userId: user._id,
+      risk: risks[idx],
+      team: bet.teamPick
+    }
+    User.findOne( {_id: user._id} )
+      .then(user => {
+        user.bets.push(newBet)
+        user.save((err, user) => user)
+      })
+  })
+  var x = req.body
+  res.json({user})
 }
 
 module.exports = {
  create: create
 };
+
+
+// var BetSchema = new mongoose.Schema({
+//   matchId: { type: String, ref: 'Match' },
+//   userId: { type: String, ref: 'User', required: true },
+//   risk: Number,
+//   team: String
+// });

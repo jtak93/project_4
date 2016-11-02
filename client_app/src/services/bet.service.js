@@ -45,11 +45,11 @@
       betSlip = [];
     }
 
-    function placeBet(betSlip, risks) {
+    function placeBet(betSlip, risks, user) {
       var url = `${baseUrl}/bets/create`
-      return $http.post(url, {betSlip, risks})
+      return $http.post(url, {betSlip, risks, user})
                   .then((response) => {
-                    console.log(response)
+                    console.log("bets placed:", response)
                   });
     }
 
