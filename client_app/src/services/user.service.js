@@ -68,6 +68,7 @@
     }
 
     function logout() {
+      user = null;
       return AuthTokenService.removeToken();
     }
 

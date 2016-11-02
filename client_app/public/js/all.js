@@ -295,6 +295,7 @@
     }
 
     function logout() {
+      user = null;
       return AuthTokenService.removeToken();
     }
 
@@ -316,6 +317,41 @@
 
   function MainController($log) {
     var vm = this;
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
+    .controller("DashboardCtrl", DashboardCtrl);
+
+  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
+
+  function DashboardCtrl($log, MatchService, BetService, UserService) {
+    var vm = this;
+    vm.tabs = [{
+            title: 'Profile',
+            url: 'one.tpl.html'
+        }, {
+            title: 'My Bets',
+            url: 'two.tpl.html'
+        }, {
+            title: 'Past Bets',
+            url: 'three.tpl.html'
+    }];
+
+    vm.currentTab = 'one.tpl.html';
+
+    vm.onClickTab = function (tab) {
+        vm.currentTab = tab.url;
+    }
+
+    vm.isActiveTab = function(tabUrl) {
+        return tabUrl == vm.currentTab;
+    }
   }
 
 })();
@@ -398,41 +434,6 @@
 
   angular
     .module("app")
-    .controller("DashboardCtrl", DashboardCtrl);
-
-  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
-
-  function DashboardCtrl($log, MatchService, BetService, UserService) {
-    var vm = this;
-    vm.tabs = [{
-            title: 'Test',
-            url: 'one.tpl.html'
-        }, {
-            title: 'My Bets',
-            url: 'two.tpl.html'
-        }, {
-            title: 'WHAT',
-            url: 'three.tpl.html'
-    }];
-
-    vm.currentTab = 'one.tpl.html';
-
-    vm.onClickTab = function (tab) {
-        vm.currentTab = tab.url;
-    }
-
-    vm.isActiveTab = function(tabUrl) {
-        return tabUrl == vm.currentTab;
-    }
-  }
-
-})();
-
-(function() {
-  "use strict";
-
-  angular
-    .module("app")
     .controller("UserController", UserController);
 
   UserController.$inject = ["$log", "UserService", "$state", "AuthTokenService", "$window"];
@@ -443,7 +444,6 @@
     vm.signUp = signUp;
     vm.logout = logout;
     vm.noMatch = null;
-    vm.isLoggedIn = null;
     vm.userService = UserService;
     vm.getUser = getUser;
 
@@ -454,14 +454,12 @@
     }
     function checkLoggedIn() {
       UserService.checkLoggedIn();
-      vm.isLoggedIn = true;
       vm.user = getUser();
     }
 
     function login() {
       UserService.login(vm.username, vm.password)
         .then( () => {
-          vm.isLoggedIn = true;
           $('#myModal').modal('hide');
           $state.go('home')
           checkLoggedIn();
@@ -478,7 +476,6 @@
         }
         return UserService.signUp(newUser)
           .then( () => {
-            vm.isLoggedIn = true;
             $('#myModal').modal('hide');
             $state.go('home')
             checkLoggedIn();
@@ -493,7 +490,7 @@
 
     function logout() {
       UserService.logout();
-      vm.isLoggedIn = false;
+      vm.user = getUser();
     }
 
     function decode(token) {
