@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema
 
 var betSchema = new mongoose.Schema({
-  matchId: { type: Schema.Types.ObjectId, ref: 'Match', unique: true },
+  matchId: { type: Schema.Types.ObjectId, ref: 'Match'},
   userId: { type: Schema.Types.ObjectId, ref: 'User' },
   risk: Number,
   team: String

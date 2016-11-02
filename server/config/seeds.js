@@ -11,7 +11,6 @@ var users = [
     email: 'admin@email.com',
     birthday: Date.now(),
     balance: 10000,
-    inPlay: 0,
     bets: []
   },
 ];
@@ -50,14 +49,39 @@ Match
       return User.create(users);
     })
     .then((users) => {
-      console.log(`Seeded ${users.length} users`);
-      return Match.create(matches);
-    })
-    .then( (matches) => {
-      console.log(`Seeded ${matches.length} matches`);
-      mongoose.connection.close();
-      process.exit();
+      console.log(users)
+      users.map(user => {
+        console.log(user)
+        var newBet = {
+          matchId: null,
+          userId: user._id,
+          risk: 1000
+        };
+        user.bets.push(newBet);
+        user.save( (err, user) => {
+          console.log(`Seeded ${users.length} users`);
+          return user;
+        })
+        .then( () => {
+          return Match.create(matches);
+        })
+        .then( matches => {
+          matches.map( match => {
+            var newBet = {
+              matchId: match._id,
+              userId: null,
+              risk: 1000
+            };
+            match.bets.push(newBet);
+            match.save( (err, match) => {
+              console.log(`Seeded ${matches.length} matches`);
+            })
+            .then( () => {
+              mongoose.connection.close();
+              process.exit();
+            });
+          });
+        });
+      });
     });
   });
-
-
