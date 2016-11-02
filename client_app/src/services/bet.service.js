@@ -9,6 +9,7 @@
 
   function BetService($http, MatchService, $window, $log) {
 
+    var baseUrl = 'http://localhost:3000';
     var betSlip = [];
     var matches = MatchService.all()
         .then( matchesRes => matches = matchesRes.data)
@@ -17,7 +18,8 @@
       getBetSlip: getBetSlip,
       betTeam1: betTeam1,
       betTeam2: betTeam2,
-      clearBetSlip: clearBetSlip
+      clearBetSlip: clearBetSlip,
+      placeBet: placeBet
     };
 
     function getBetSlip() {
@@ -41,6 +43,14 @@
     function clearBetSlip() {
       console.log('clear BS')
       betSlip = [];
+    }
+
+    function placeBet(betSlip, risks) {
+      var url = `${baseUrl}/bets/create`
+      return $http.post(url, {betSlip, risks})
+                  .then((response) => {
+                    console.log(response)
+                  });
     }
 
     return betService;

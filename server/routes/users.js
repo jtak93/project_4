@@ -14,5 +14,7 @@ router.post('/login', token.create);
 
 router.post('/signup', userService.create, token.create);
 
+router.post('/signup', userService.create, token.create);
+
 
 module.exports = router;

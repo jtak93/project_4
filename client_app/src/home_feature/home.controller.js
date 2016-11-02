@@ -51,7 +51,7 @@
     }
 
     function placeBet() {
-      BetService.placeBet(vm.betSlip)
+      BetService.placeBet(vm.betSlip, vm.risks)
     }
 
     function clearBetSlip() {
