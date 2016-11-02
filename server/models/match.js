@@ -3,9 +3,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema
 
 var betSchema = new mongoose.Schema({
-  matchId: { type: Schema.Types.ObjectId, ref: 'Match' },
+  matchId: { type: Schema.Types.ObjectId, ref: 'Match', unique: true },
   userId: { type: Schema.Types.ObjectId, ref: 'User' },
-  risk: Number
+  risk: Number,
+  team: String
 });
 
 // TODO: validations

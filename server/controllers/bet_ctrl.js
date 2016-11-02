@@ -16,7 +16,9 @@ function create(req, res, next) {
     }
     User.findOne( {_id: user._id} )
       .then(user => {
-        user.bets.push(newBet)
+        user.bets.push(newBet);
+        user.balance -= risks[idx];
+        user.inPlay += risks[idx];
         user.save((err, user) => user)
       })
   })
