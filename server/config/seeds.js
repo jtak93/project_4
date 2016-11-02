@@ -13,7 +13,7 @@ var users = [
     balance: 10000,
     inPlay: 0,
     bets: []
-  },
+  }
 ];
 
 var matches = [
@@ -50,39 +50,43 @@ Match
       return User.create(users);
     })
     .then((users) => {
-      console.log(users)
-      users.map(user => {
-        console.log(user)
+      // console.log(users)
+      users.forEach(user => {
+        // console.log(user)
         var newBet = {
           matchId: null,
           userId: user._id,
           risk: 1000
         };
         user.bets.push(newBet);
-        user.save( (err, user) => {
-          console.log(`Seeded ${users.length} users`);
+        user.save( err => {
+          console.log(`Seeded bet in user ${user}`);
           return user;
-        })
-        .then( () => {
-          return Match.create(matches);
-        })
-        .then( matches => {
-          matches.map( match => {
-            var newBet = {
-              matchId: match._id,
-              userId: null,
-              risk: 1000
-            };
-            match.bets.push(newBet);
-            match.save( (err, match) => {
-              console.log(`Seeded ${matches.length} matches`);
-            })
-            .then( () => {
-              mongoose.connection.close();
-              process.exit();
-            });
-          });
         });
       });
+      return users;
+    })
+    .then( () => {
+      console.log("create matches")
+      return Match.create(matches);
+    })
+    .then( matches => {
+      console.log("matches need saving")
+      matches.forEach( match => {
+        var newBet = {
+          matchId: match._id,
+          userId: null,
+          risk: 1000
+        };
+        match.bets.push(newBet);
+        match.save( err => {
+          console.log(`Seeded ${matches.length} matches`);
+        })
+      })
+    })
+    .then( () => {
+      mongoose.connection.close();
+      process.exit();
     });
-  });
+  })
+
