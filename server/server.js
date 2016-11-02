@@ -10,7 +10,7 @@ var bluebird = require('bluebird')
 require('dotenv').config();
 var db = require('./config/db')
 
-var users = require('./routes/users');
+var index = require('./routes/index');
 var matches = require('./routes/api/matches');
 
 var app = express();
@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/', users);
+app.use('/', index);
 app.use('/api', matches);
 
 // catch 404 and forward to error handler
