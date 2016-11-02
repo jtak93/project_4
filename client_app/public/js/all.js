@@ -245,9 +245,18 @@
       setUser: setUser,
       login: login,
       signUp: signUp,
-      logout: logout
+      logout: logout,
+      checkLoggedIn: checkLoggedIn
     };
     return service;
+
+    function checkLoggedIn() {
+      if (AuthTokenService.getToken()) {
+        var token = AuthTokenService.getToken();
+        var logUser = decode(token);
+        user = logUser;
+      }
+    }
 
     function getUser() {
       return user;
@@ -436,18 +445,17 @@
     vm.noMatch = null;
     vm.isLoggedIn = null;
     vm.userService = UserService;
+    vm.getUser = getUser;
 
     checkLoggedIn();
     // check if logged in
+    function getUser() {
+      return UserService.getUser();
+    }
     function checkLoggedIn() {
-      if (AuthTokenService.getToken()) {
-        var token = AuthTokenService.getToken();
-        vm.isLoggedIn = true;
-        var user = decode(token);
-        vm.user = user;
-      } else {
-        vm.isLoggedIn = false;
-      }
+      UserService.checkLoggedIn();
+      vm.isLoggedIn = true;
+      vm.user = getUser();
     }
 
     function login() {
