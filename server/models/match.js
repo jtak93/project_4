@@ -29,10 +29,11 @@ var matchSchema = new mongoose.Schema({
 
 matchSchema.virtual('odds1').get(function () {
   var total = this.t1bet + this.t2bet
-  if (total < 1000) {
-    return 1
+  var rakedTotal = total * 0.95
+  if (this.t1bet < 500 || this.t2bet < 500) {
+    return .95
   } else {
-    var num = (this.t2bet / this.t1bet) * 0.95
+    var num = (rakedTotal - this.t1bet) / this.t1bet
     return num;
   }
   // 'this' represents the match document
@@ -41,10 +42,11 @@ matchSchema.virtual('odds1').get(function () {
 
 matchSchema.virtual('odds2').get(function () {
   var total = this.t1bet + this.t2bet
-  if (total < 1000) {
-    return 1
+  var rakedTotal = total * 0.95
+  if (this.t1bet < 500 || this.t2bet < 500) {
+    return .95
   } else {
-    var num = (this.t1bet / this.t2bet) * 0.95
+    var num = (rakedTotal - this.t2bet) / this.t2bet
     return num;
   }
   // 'this' represents the match document

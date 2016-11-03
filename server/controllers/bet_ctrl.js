@@ -3,7 +3,7 @@ var Match = require('../models/match');
 var Bet = require('../models/bet');
 
 function create(req, res, next) {
-  // TODO: HANDLE ERROR
+  // TODO: HANDLE ERROR AND FIX HANDLING MULTIPLE BETS
   console.log("running bet create")
   var betSlip = req.body.betSlip;
   var risks = req.body.risks;
@@ -42,8 +42,10 @@ function create(req, res, next) {
               }
               match.save(err => {
                 if (err) return err
-                console.log(match)
-                next();
+                console.log('match:', match)
+                if (idx === betSlip.length - 1){
+                  next();
+                }
               })
             })
         })

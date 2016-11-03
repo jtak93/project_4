@@ -89,6 +89,7 @@ li.tab {
 }
 
 .bet-slip {
+  position: fixed;
   border: 1px solid black !important;
   border-radius: 5px;
   background-color: #47463b;

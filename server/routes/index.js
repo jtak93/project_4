@@ -15,7 +15,7 @@ router.post('/login', token.create);
 
 router.post('/signup', userCtrl.create, token.create);
 
-router.post('/bets/create', betCtrl.create, token.passUser);
+router.post('/bets/create', token.authenticate, betCtrl.create, token.passUser);
 
 
 

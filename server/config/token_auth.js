@@ -9,6 +9,7 @@ var jwtOptions = {
 
 function authenticate(req, res, next) {
   var authHeader = req.get('Authorization');
+  console.log("check authorization")
 
   if (!authHeader) {
     return next({

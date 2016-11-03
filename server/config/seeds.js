@@ -51,14 +51,25 @@ var matches = [
   t1bet: 1,
   t2bet: 1,
   active: false,
-  result: null,
+  result: 1,
+  bets: []
+},
+{
+  game: 'LOL',
+  tournament: 'ESL Two',
+  date: Date.now(),
+  teams: ['Sup', 'Son'],
+  t1bet: 1,
+  t2bet: 1,
+  active: false,
+  result: 0,
   bets: []
 },
 {
   game: 'DOTA 2',
   tournament: 'ESL Two',
   date: Date.now(),
-  teams: ['t1', 't2'],
+  teams: ['XD', 'KappaPride'],
   t1bet: 1,
   t2bet: 1,
   active: false,
@@ -66,24 +77,13 @@ var matches = [
   bets: []
 },
 {
-  game: 'DOTA 2',
+  game: 'CSGO',
   tournament: 'ESL Two',
   date: Date.now(),
-  teams: ['t1', 't2'],
+  teams: ['TempoStorm', 'Fnatic'],
   t1bet: 1,
   t2bet: 1,
-  active: false,
-  result: null,
-  bets: []
-},
-{
-  game: 'DOTA 2',
-  tournament: 'ESL Two',
-  date: Date.now(),
-  teams: ['t1', 't2'],
-  t1bet: 1,
-  t2bet: 1,
-  active: false,
+  active: true,
   result: null,
   bets: []
 }
