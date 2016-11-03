@@ -42,6 +42,53 @@ var matchTwo =
     bets: []
   }
 
+var matches = [
+{
+  game: 'DOTA 2',
+  tournament: 'ESL Two',
+  date: Date.now(),
+  teams: ['t1', 't2'],
+  t1bet: 1,
+  t2bet: 1,
+  active: false,
+  result: null,
+  bets: []
+},
+{
+  game: 'DOTA 2',
+  tournament: 'ESL Two',
+  date: Date.now(),
+  teams: ['t1', 't2'],
+  t1bet: 1,
+  t2bet: 1,
+  active: false,
+  result: null,
+  bets: []
+},
+{
+  game: 'DOTA 2',
+  tournament: 'ESL Two',
+  date: Date.now(),
+  teams: ['t1', 't2'],
+  t1bet: 1,
+  t2bet: 1,
+  active: false,
+  result: null,
+  bets: []
+},
+{
+  game: 'DOTA 2',
+  tournament: 'ESL Two',
+  date: Date.now(),
+  teams: ['t1', 't2'],
+  t1bet: 1,
+  t2bet: 1,
+  active: false,
+  result: null,
+  bets: []
+}
+]
+
 
 Match
   .remove({})
@@ -74,7 +121,7 @@ Match
     })
     .then( () => {
       console.log("create match 2")
-      return Match.create(matchTwo);
+      return Match.create(matches);
     })
     // .then( matches => {
     //   console.log("matches need saving")
