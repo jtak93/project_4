@@ -295,6 +295,7 @@
     }
 
     function logout() {
+      user = null;
       return AuthTokenService.removeToken();
     }
 
@@ -332,13 +333,13 @@
   function DashboardCtrl($log, MatchService, BetService, UserService) {
     var vm = this;
     vm.tabs = [{
-            title: 'Test',
+            title: 'Profile',
             url: 'one.tpl.html'
         }, {
             title: 'My Bets',
             url: 'two.tpl.html'
         }, {
-            title: 'WHAT',
+            title: 'Past Bets',
             url: 'three.tpl.html'
     }];
 
@@ -443,7 +444,6 @@
     vm.signUp = signUp;
     vm.logout = logout;
     vm.noMatch = null;
-    vm.isLoggedIn = null;
     vm.userService = UserService;
     vm.getUser = getUser;
 
@@ -454,14 +454,12 @@
     }
     function checkLoggedIn() {
       UserService.checkLoggedIn();
-      vm.isLoggedIn = true;
       vm.user = getUser();
     }
 
     function login() {
       UserService.login(vm.username, vm.password)
         .then( () => {
-          vm.isLoggedIn = true;
           $('#myModal').modal('hide');
           $state.go('home')
           checkLoggedIn();
@@ -478,10 +476,9 @@
         }
         return UserService.signUp(newUser)
           .then( () => {
-            vm.isLoggedIn = true;
             $('#myModal').modal('hide');
-            $state.go('home')
             checkLoggedIn();
+            $state.go('home')
           })
       }
       // TODO show user passwords dont match
@@ -493,7 +490,8 @@
 
     function logout() {
       UserService.logout();
-      vm.isLoggedIn = false;
+      vm.user = getUser();
+      $state.go('home');
     }
 
     function decode(token) {

@@ -19,10 +19,10 @@
                   {{ match.teams[0] }}
                 </div>
                 <div class="col-sm-6">
-                  {{ match.odds }}
+                  {{ match.odds1 }}
                 </div>
                 <div class="col-sm-2">
-                  <button ng-if="user.isLoggedIn" ng-click="home.betTeam1(match)" class="btn">=></button>
+                  <button ng-if="user.user" ng-click="home.betTeam1(match)" class="btn">=></button>
                 </div>
               </div>
 
@@ -31,10 +31,10 @@
                   {{ match.teams[1] }}
                 </div>
                 <div class="col-sm-6">
-                  {{ 1/match.odds }}
+                  {{ match.odds2 }}
                 </div>
                 <div class="col-sm-2">
-                  <button ng-if="user.isLoggedIn" ng-click="home.betTeam2(match)" class="btn">=></button>
+                  <button ng-if="user.user" ng-click="home.betTeam2(match)" class="btn">=></button>
                 </div>
               </div>
 
@@ -43,7 +43,7 @@
         </div> <!-- closes ng-repeat -->
       </div> <!-- closes matches -->
     </div>
-    <div ng-if="user.isLoggedIn" class="col-sm-3 bet-slip container">
+    <div ng-if="user.user" class="col-sm-3 bet-slip container">
       <div class="">
         BETSLIP
       </div>

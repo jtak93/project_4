@@ -7,7 +7,8 @@ function createUser(req, res, next) {
     username: req.body.username,
     password: req.body.password,
     email: req.body.email,
-    balance: 1000
+    balance: 1000,
+    inPlay: 0
   }
   User.create(user)
     .then( user => next() );

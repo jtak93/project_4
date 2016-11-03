@@ -22,8 +22,8 @@ var matchOne =
     tournament: 'ESL One',
     date: Date.now(),
     teams: ['Liquid', 'Navi'],
-    t1bet: 0,
-    t2bet: 0,
+    t1bet: 1,
+    t2bet: 1,
     active: true,
     result: null,
     bets: []
@@ -35,8 +35,8 @@ var matchTwo =
     tournament: 'ESL Two',
     date: Date.now(),
     teams: ['t1', 't2'],
-    t1bet: 0,
-    t2bet: 0,
+    t1bet: 1,
+    t2bet: 1,
     active: false,
     result: null,
     bets: []

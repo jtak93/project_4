@@ -14,7 +14,10 @@ var userSchema = new mongoose.Schema({
   email: String,
   birthday: Date,
   balance: Number,
-  inPlay: Number,
+  inPlay: {
+    type: Number,
+    default: 0
+  },
   bets: [betSchema]
 });
 
