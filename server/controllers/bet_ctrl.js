@@ -13,7 +13,11 @@ function create(req, res, next) {
       matchId: bet._id,
       userId: user._id,
       risk: risks[idx],
-      team: bet.teamPick
+      team: bet.teamPick,
+      game: bet.game,
+      tournament: bet.tournament,
+      teams: bet.teams,
+      result: bet.result
     }
     User.findOne( {_id: user._id} )
       .then(user => {

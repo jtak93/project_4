@@ -21,6 +21,12 @@ gulp.task('styles', ['scripts'], function() {
     .pipe(gulp.dest('public/assets/css'));
 });
 
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('move', () => {
+  gulp.src(['client/**/*.js'])
+    .pipe(gulp.dest('server/public'));
+});
+
+gulp.task('default', ['scripts', 'styles', 'move']);
+
 
 gulp.watch(['src/**/*.js', 'src/**/*.css'], ['default']);
