@@ -6,12 +6,7 @@ var betSchema = new mongoose.Schema({
   matchId: String,
   userId: String,
   risk: Number,
-  team: String,
-  game: String,
-  tournament: String,
-  date: Date,
-  teams: [String],
-  result: Number
+  team: String
 });
 
 // TODO: validations

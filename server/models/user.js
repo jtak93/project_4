@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var Match = require('./match')
+var matchSchema = mongoose.model('Match').schema
 
 var Schema = mongoose.Schema
 
@@ -23,7 +25,7 @@ var userSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  bets: [betSchema]
+  matches: [matchSchema]
 });
 
 // add bcrypt hashing to model (works on a password field)!

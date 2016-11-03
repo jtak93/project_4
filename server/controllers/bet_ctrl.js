@@ -9,49 +9,47 @@ function create(req, res, next) {
   var risks = req.body.risks;
   var user = req.body.user;
   betSlip.forEach( (bet, idx) => {
+    console.log(bet);
     var newBet = {
       matchId: bet._id,
       userId: user._id,
       risk: risks[idx],
-      team: bet.teamPick,
-      game: bet.game,
-      tournament: bet.tournament,
-      teams: bet.teams,
-      result: bet.result
+      team: bet.teamPick
     }
-    User.findOne( {_id: user._id} )
-      .then(user => {
-        user.bets.push(newBet);
-        user.balance -= risks[idx];
-        user.inPlay += risks[idx];
-        console.log("user:", user)
-        user.save((err) => {
-          console.log("err:", err)
-          Match.findOne( {_id: bet._id} )
-            .then(match => {
-              match.bets.push(newBet);
-              // get team pick
-              console.log(bet.teams)
-              console.log(bet.teamPick)
-              var teamNum = bet.teams.indexOf(bet.teamPick)
-              console.log(teamNum)
-              if  (teamNum === 0) {
-                match.t1bet += risks[idx]
-              } else if (teamNum === 1) {
-                match.t2bet += risks[idx]
-              }
-              match.save(err => {
-                if (err) return err
-                console.log('match:', match)
-                if (idx === betSlip.length - 1){
-                  next();
-                }
-              })
-            })
+    console.log(newBet);
+    Match.findOne( {_id: bet._id} )
+    .then( match => {
+      match.bets.push(newBet)
+      var teamNum = bet.teams.indexOf(bet.teamPick)
+      console.log(teamNum)
+      if  (teamNum === 0) {
+        match.t1bet += risks[idx]
+      } else if (teamNum === 1) {
+        match.t2bet += risks[idx]
+      }
+      return match.save( err => {
+        if (err) return err.message
+      })
+    })
+    .then( () => {
+      Match.findOne( {_id: bet._id} )
+      .then( match => {
+        User.findOne( {_id: user._id} )
+        .then( oldUser => {
+          oldUser.matches.push(match);
+          oldUser.balance -= risks[idx];
+          oldUser.inPlay += risks[idx];
+          oldUser.save( err => {
+            console.log("User saved!");
+            next();
+          })
         })
       })
+    })
   })
 }
+// TODO USE PROMISE.ALL TO HANDLE THE MULTIPLE BETS
+
 
 module.exports = {
  create: create
