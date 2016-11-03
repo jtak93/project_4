@@ -2,7 +2,7 @@ var User = require('../models/user');
 
 function createUser(req, res, next) {
   // TODO: HANDLE ERR
-  console.log(req.body);
+  console.log("user:", req.body);
   var user = {
     username: req.body.username,
     password: req.body.password,
@@ -11,7 +11,10 @@ function createUser(req, res, next) {
     inPlay: 0
   }
   User.create(user)
-    .then( user => next() );
+    .then( user => {
+      console.log(user)
+      next();
+    });
 }
 
 module.exports = {

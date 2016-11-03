@@ -4,6 +4,7 @@ var Bet = require('../models/bet');
 
 function create(req, res, next) {
   // TODO: HANDLE ERROR
+  console.log("running bet create")
   var betSlip = req.body.betSlip;
   var risks = req.body.risks;
   var user = req.body.user;
