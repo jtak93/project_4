@@ -326,41 +326,6 @@
 
   angular
     .module("app")
-    .controller("DashboardCtrl", DashboardCtrl);
-
-  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
-
-  function DashboardCtrl($log, MatchService, BetService, UserService) {
-    var vm = this;
-    vm.tabs = [{
-            title: 'Profile',
-            url: 'one.tpl.html'
-        }, {
-            title: 'My Bets',
-            url: 'two.tpl.html'
-        }, {
-            title: 'Past Bets',
-            url: 'three.tpl.html'
-    }];
-
-    vm.currentTab = 'one.tpl.html';
-
-    vm.onClickTab = function (tab) {
-        vm.currentTab = tab.url;
-    }
-
-    vm.isActiveTab = function(tabUrl) {
-        return tabUrl == vm.currentTab;
-    }
-  }
-
-})();
-
-(function() {
-  "use strict";
-
-  angular
-    .module("app")
     .controller("HomeController", HomeController);
 
   HomeController.$inject = ["$log", "MatchService", "BetService", "UserService"];
@@ -434,6 +399,41 @@
 
   angular
     .module("app")
+    .controller("DashboardCtrl", DashboardCtrl);
+
+  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
+
+  function DashboardCtrl($log, MatchService, BetService, UserService) {
+    var vm = this;
+    vm.tabs = [{
+            title: 'Profile',
+            url: 'one.tpl.html'
+        }, {
+            title: 'My Bets',
+            url: 'two.tpl.html'
+        }, {
+            title: 'Past Bets',
+            url: 'three.tpl.html'
+    }];
+
+    vm.currentTab = 'one.tpl.html';
+
+    vm.onClickTab = function (tab) {
+        vm.currentTab = tab.url;
+    }
+
+    vm.isActiveTab = function(tabUrl) {
+        return tabUrl == vm.currentTab;
+    }
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
     .controller("UserController", UserController);
 
   UserController.$inject = ["$log", "UserService", "$state", "AuthTokenService", "$window"];
@@ -477,8 +477,8 @@
         return UserService.signUp(newUser)
           .then( () => {
             $('#myModal').modal('hide');
-            $state.go('home')
             checkLoggedIn();
+            $state.go('home')
           })
       }
       // TODO show user passwords dont match
@@ -491,6 +491,7 @@
     function logout() {
       UserService.logout();
       vm.user = getUser();
+      $state.go('home');
     }
 
     function decode(token) {

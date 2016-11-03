@@ -46,8 +46,8 @@
         return UserService.signUp(newUser)
           .then( () => {
             $('#myModal').modal('hide');
-            $state.go('home')
             checkLoggedIn();
+            $state.go('home')
           })
       }
       // TODO show user passwords dont match
@@ -60,6 +60,7 @@
     function logout() {
       UserService.logout();
       vm.user = getUser();
+      $state.go('home');
     }
 
     function decode(token) {
