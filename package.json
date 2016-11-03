@@ -1,0 +1,24 @@
+{
+  "name": "project_4",
+  "version": "1.0.0",
+  "description": "Welcome to Esports Madness, a place to add a little fun to your esports viewing parties! Bet on games, win e-coins, and show your superior knowledge of the scene. ## Installation TODO: Describe the installation process  ## Project Approach",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtak93/project_4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtak93/project_4/issues"
+  },
+  "homepage": "https://github.com/jtak93/project_4#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^2.0.0"
+  }
+}

@@ -1,0 +1,73 @@
+<h1>WELCOME TO DASHBOARD</h1>
+
+<ul class="tab">
+    <li class="tab" ng-repeat="tab in dash.tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="dash.onClickTab(tab)">
+        {{tab.title}}
+    </li>
+</ul>
+<div id="mainView">
+    <div ng-include="dash.currentTab"></div>
+</div>
+<script type="text/ng-template" id="one.tpl.html">
+<div id="viewOne">
+  <h1>Profile</h1>
+  {{user}}
+  <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc.</p>
+</div>
+</script>
+
+<script type="text/ng-template" id="two.tpl.html">
+  <div id="viewTwo">
+    <h1>My Active Bets</h1>
+    <div class="container-fluid myBets">
+      <div class="row" ng-repeat="bet in user.user.bets">
+        <div class="col-sm-9">
+          <div class="container-fluid">
+
+            <div class="row tournament-name">
+              <div class="col-sm-4">
+                {{ bet.tournament }}
+              </div>
+              <div class="col-sm-4">
+                {{ bet.risk }}
+              </div>
+              <div class="col-sm-4">
+                {{ bet.team }}
+              </div>
+            </div>
+
+            <div class="row team-1">
+              <div class="col-sm-4">
+                {{ bet.teams[0] }} vs. {{ bet.teams[1] }}
+              </div>
+              <div class="col-sm-6">
+                {{ bet.odds1 }}
+              </div>
+              <div class="col-sm-2 bet-arrow-btn">
+                <button ng-if="user.user" ng-click="home.betTeam1(bet)" class="btn">=></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- closes ng-repeat -->
+    </div> <!-- closes myBets -->
+    </div>
+</script>
+
+<script type="text/ng-template" id="three.tpl.html">
+  <div id="viewThree">
+    <h1>All Bets</h1>
+    <div class="container-fluid">
+      <div class="row">
+        <div ng-repeat="bet in user.user.bets">
+          <div class="col-sm-10">
+            {{bet}}
+          </div>
+          <div class="col-sm-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
