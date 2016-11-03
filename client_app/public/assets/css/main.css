@@ -65,3 +65,30 @@ li.tab {
     color: #000;
 }
 
+.top-bar {
+  background-color: #47463b;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  background-color: black !important;
+}
+
+.bet-slip {
+  border: 1px solid black !important;
+  border-radius: 5px;
+}
+
+.bet-slip-bet {
+  margin: 0 -10px;
+  border: 1px solid black !important;
+  border-radius: 5px;
+}
+
+.risk-input {
+  width: 8vw;
+}

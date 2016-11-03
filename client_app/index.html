@@ -17,7 +17,7 @@
   <script src="/public/js/all.js"></script>
 </head>
 <body ng-controller="UserController as user">
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default top-bar">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -33,39 +33,41 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li ng-if="user.user" class=""><a ui-sref="dashboard">Dashboard</a></li>
-          <li class=""><a href="#">About</a></li>
+          <li ng-if="user.user" class=""><a ui-sref="dashboard" class="nav-link">Dashboard</a></li>
+          <li class=""><a href="#" class="nav-link">About</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li ng-if="user.user"><a href="#">Balance: {{user.getUser().balance}}</a></li>
-          <li ng-if="user.user"><a href="#">In Play: {{user.getUser().inPlay}}</a></li>
-          <li ng-if="!user.user"><button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Log In/Register</button></li>
-          <li ng-if="user.user"><a href="#">Welcome, {{user.user.username}}</a></li>
-          <li ng-if="user.user"><button ng-click="user.logout()" class="btn btn-primary btn-lg">Log Out</button></li>
+          <li ng-if="user.user"><a href="#" class="nav-link">Balance: {{user.getUser().balance}}</a></li>
+          <li ng-if="user.user"><a href="#" class="nav-link">In Play: {{user.getUser().inPlay}}</a></li>
+          <li ng-if="!user.user"><button class="btn btn-danger btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Log In/Register</button></li>
+          <li ng-if="user.user"><a href="#" class="nav-link">Welcome, {{user.user.username}}</a></li>
+          <li ng-if="user.user"><a ng-click="user.logout()" class="nav-link">Log Out</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+  <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3">
       <div class="sidebar-nav">
         <div class="navbar navbar-default" role="navigation">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Menu Item 1</a></li>
-            <li><a href="#">Menu Item 2</a></li>
+            <li class="active"><a href="#">All Games</a></li>
+            <li><a href="#">CSGO</a></li>
+            <li><a href="#">League of Legends</a></li>
+            <li><a href="#">DOTA 2</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><a href="#">ALL GAMES</a></li>
+                <li><a href="#">CSGO</a></li>
+                <li><a href="#">DOTA2</a></li>
+                <li><a href="#">LOL</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
-            <li><a href="#">Menu Item 4</a></li>
             <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
           </ul>
         </div>
@@ -76,6 +78,7 @@
         <!-- PAGE TEMPLATES INSERT HERE -->
       </main>
     </div>
+  </div>
   </div>
 
 

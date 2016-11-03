@@ -1,7 +1,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <h1> SHOW MATCHES </h1>
       <div class="container-fluid matches">
         <div class="row" ng-repeat="match in home.matches track by match._id">
@@ -47,27 +47,30 @@
       <div class="">
         BETSLIP
       </div>
+      <form ng-submit="home.placeBet(user.user)">
       <div ng-repeat="bet in home.betSlip track by $index" class="">
-        <!-- TODO: MAKE A FORM -->
-        <div>
-          <button>X</button>Game: {{bet.game}}
+        <div class="bet-slip-bet">
+          <div>
+            <button class="btn-danger">X</button>Game: {{bet.game}}
+          </div>
+          <div>
+            MATCH: {{bet.teams[0]}} vs. {{bet.teams[1]}}
+          </div>
+          <div>
+            PICK: {{bet.teamPick}}
+          </div>
+          <label class="control-label" for="Risk">Risk:</label>
+          <input class="risk-input" ng-model="home.risks[$index]" type="number" required>
         </div>
-        <div>
-          MATCH: {{bet.teams[0]}} vs. {{bet.teams[1]}}
-        </div>
-        <div>
-          PICK: {{bet.teamPick}}
-        </div>
-        <label class="control-label" for="Risk">Risk:</label>
-        <input ng-model="home.risks[$index]" type="number">
       </div>
       <div ng-if="home.risks.length > 0">
         <div>
           TOTAL RISK: {{home.totalRisk()}}
         </div>
-        <button ng-click="home.placeBet(user.user)" class="btn btn-success">Place Bets</button>
+        <button class="btn btn-success">Place Bets</button>
         <button ng-click="home.clearBetSlip()" class="btn btn-danger">Remove Bets</button>
       </div>
+      </form>
     </div> <!-- closes bet-slip -->
   </div>
 </div>
