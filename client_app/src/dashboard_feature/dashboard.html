@@ -19,8 +19,17 @@
 <script type="text/ng-template" id="two.tpl.html">
   <div id="viewTwo">
     <h1>My Active Bets</h1>
-    <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
-  </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div ng-repeat="bet in user.user.bets">
+          <div class="col-sm-10">
+            {{bet}}
+          </div>
+          <div class="col-sm-2">
+          </div>
+        </div>
+      </div>
+    </div>  </div>
 </script>
 
 <script type="text/ng-template" id="three.tpl.html">
