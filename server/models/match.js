@@ -22,21 +22,31 @@ var matchSchema = new mongoose.Schema({
   bets: [betSchema]
 });
 
-matchSchema.virtual('odds').get(() => {
+matchSchema.virtual('odds1').get(function () {
   var total = this.t1bet + this.t2bet
-  var num = parse(total);
-  return 2;
-  // if (total < 1000) {
-  //   return 1
-  // } else {
-  //   return num;
-  // }
+  if (total < 1000) {
+    return 1
+  } else {
+    var num = (this.t2bet / this.t1bet) * 0.95
+    return num;
+  }
+  // 'this' represents the match document
+  // this.t1bet...
+});
+
+matchSchema.virtual('odds2').get(function () {
+  var total = this.t1bet + this.t2bet
+  if (total < 1000) {
+    return 1
+  } else {
+    var num = (this.t1bet / this.t2bet) * 0.95
+    return num;
+  }
   // 'this' represents the match document
   // this.t1bet...
 });
 
 matchSchema.set('toJSON', {virtuals: true});
-matchSchema.set('toObject', { virtuals: true });
 
 var Match = mongoose.model('Match', matchSchema);
 

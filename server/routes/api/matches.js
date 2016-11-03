@@ -6,6 +6,10 @@ var Match = require('../../models/match')
 router.get('/matches', function(req, res, next) {
   Match.find({})
     .then(matches => {
+      matches.forEach( match => {
+        console.log(match.odds)
+        match.odds = match.odds
+      })
       res.json(matches);
     })
 });
