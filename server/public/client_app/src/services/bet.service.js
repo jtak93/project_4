@@ -9,7 +9,7 @@
 
   function BetService($http, MatchService, $window, $log, UserService) {
 
-    var baseUrl = process.env.BASE_URL;
+    // var baseUrl = process.env.BASE_URL;
     var betSlip = [];
     var matches = MatchService.all()
         .then( matchesRes => matches = matchesRes.data)

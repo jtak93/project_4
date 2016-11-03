@@ -9,7 +9,7 @@
 
   function UserService($http, AuthTokenService, $window, $log) {
 
-    var baseUrl = process.env.BASE_URL;
+    // var baseUrl = process.env.BASE_URL;
 
     var user = null;
 

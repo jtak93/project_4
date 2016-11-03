@@ -135,7 +135,7 @@
 
   function BetService($http, MatchService, $window, $log, UserService) {
 
-    var baseUrl = process.env.BASE_URL;
+    // var baseUrl = process.env.BASE_URL;
     var betSlip = [];
     var matches = MatchService.all()
         .then( matchesRes => matches = matchesRes.data)
@@ -199,7 +199,7 @@
 
   function MatchService($http, AuthTokenService, $window, $log) {
 
-    var baseUrl = process.env.BASE_URL;
+    // var baseUrl = process.env.BASE_URL;
     var allMatches = [];
 
     var service = {
@@ -235,7 +235,7 @@
 
   function UserService($http, AuthTokenService, $window, $log) {
 
-    var baseUrl = process.env.BASE_URL;
+    // var baseUrl = process.env.BASE_URL;
 
     var user = null;
 
