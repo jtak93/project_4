@@ -46,8 +46,8 @@
         return UserService.signUp(newUser)
           .then( () => {
             $('#myModal').modal('hide');
-            checkLoggedIn();
             $state.go('home')
+            checkLoggedIn();
           })
       }
       // TODO show user passwords dont match
