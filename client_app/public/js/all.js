@@ -457,6 +457,13 @@
       vm.user = getUser();
     }
 
+    function clearViewModel() {
+      vm.username = '';
+      vm.password = '';
+      vm.email = '';
+      vm.pwConfirm= '';
+    }
+
     function login() {
       UserService.login(vm.username, vm.password)
         .then( () => {
@@ -491,6 +498,7 @@
     function logout() {
       UserService.logout();
       vm.user = getUser();
+      clearViewModel();
       $state.go('home');
     }
 
