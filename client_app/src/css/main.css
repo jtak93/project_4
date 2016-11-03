@@ -1,5 +1,6 @@
 body {
   color: black;
+  background-color: #2e6e8c;
 }
 
 .tournament-name {
@@ -81,6 +82,8 @@ li.tab {
 .bet-slip {
   border: 1px solid black !important;
   border-radius: 5px;
+  background-color: #47463b;
+  color: white;
 }
 
 .bet-slip-bet {
@@ -92,3 +95,11 @@ li.tab {
 .risk-input {
   width: 8vw;
 }
+
+.side-nav-link:hover {
+  cursor: pointer;
+  background-color: darkgray !important;
+}
+
+
+
