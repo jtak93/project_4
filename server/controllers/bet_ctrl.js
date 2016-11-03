@@ -20,7 +20,7 @@ function create(req, res, next) {
         user.bets.push(newBet);
         user.balance -= risks[idx];
         user.inPlay += risks[idx];
-        user.save((err, user) => {
+        user.save((err) => {
           Match.findOne( {_id: bet._id} )
             .then(match => {
               match.bets.push(newBet);
