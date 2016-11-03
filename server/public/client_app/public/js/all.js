@@ -135,7 +135,7 @@
 
   function BetService($http, MatchService, $window, $log, UserService) {
 
-    var baseUrl = 'http://localhost:3000';
+    var baseUrl = process.env.BASE_URL;
     var betSlip = [];
     var matches = MatchService.all()
         .then( matchesRes => matches = matchesRes.data)
@@ -199,7 +199,7 @@
 
   function MatchService($http, AuthTokenService, $window, $log) {
 
-    var baseUrl = 'http://localhost:3000';
+    var baseUrl = process.env.BASE_URL;
     var allMatches = [];
 
     var service = {
@@ -235,7 +235,7 @@
 
   function UserService($http, AuthTokenService, $window, $log) {
 
-    var baseUrl = 'http://localhost:3000';
+    var baseUrl = process.env.BASE_URL;
 
     var user = null;
 
@@ -325,6 +325,41 @@
 
   angular
     .module("app")
+    .controller("DashboardCtrl", DashboardCtrl);
+
+  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
+
+  function DashboardCtrl($log, MatchService, BetService, UserService) {
+    var vm = this;
+    vm.tabs = [{
+            title: 'Profile',
+            url: 'one.tpl.html'
+        }, {
+            title: 'My Bets',
+            url: 'two.tpl.html'
+        }, {
+            title: 'Past Bets',
+            url: 'three.tpl.html'
+    }];
+
+    vm.currentTab = 'one.tpl.html';
+
+    vm.onClickTab = function (tab) {
+        vm.currentTab = tab.url;
+    }
+
+    vm.isActiveTab = function(tabUrl) {
+        return tabUrl == vm.currentTab;
+    }
+  }
+
+})();
+
+(function() {
+  "use strict";
+
+  angular
+    .module("app")
     .controller("HomeController", HomeController);
 
   HomeController.$inject = ["$log", "MatchService", "BetService", "UserService"];
@@ -388,41 +423,6 @@
       vm.risks = [];
       vm.betSlip = getBetSlip();
       return vm.betSlip;
-    }
-  }
-
-})();
-
-(function() {
-  "use strict";
-
-  angular
-    .module("app")
-    .controller("DashboardCtrl", DashboardCtrl);
-
-  DashboardCtrl.$inject = ["$log", "MatchService", "BetService", "UserService"];
-
-  function DashboardCtrl($log, MatchService, BetService, UserService) {
-    var vm = this;
-    vm.tabs = [{
-            title: 'Profile',
-            url: 'one.tpl.html'
-        }, {
-            title: 'My Bets',
-            url: 'two.tpl.html'
-        }, {
-            title: 'Past Bets',
-            url: 'three.tpl.html'
-    }];
-
-    vm.currentTab = 'one.tpl.html';
-
-    vm.onClickTab = function (tab) {
-        vm.currentTab = tab.url;
-    }
-
-    vm.isActiveTab = function(tabUrl) {
-        return tabUrl == vm.currentTab;
     }
   }
 

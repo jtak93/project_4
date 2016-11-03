@@ -9,7 +9,7 @@
 
   function UserService($http, AuthTokenService, $window, $log) {
 
-    var baseUrl = 'http://localhost:3000';
+    var baseUrl = process.env.BASE_URL;
 
     var user = null;
 
