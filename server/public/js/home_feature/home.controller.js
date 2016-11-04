@@ -14,8 +14,9 @@
     vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
     vm.risks = [];
-    vm.totalRisk = riskSum;
 
+    vm.totalRisk = riskSum;
+    vm.removeOneBet = removeOneBet;
     vm.betTeam1 = betTeam1;
     vm.betTeam2 = betTeam2;
     vm.placeBet = placeBet;
@@ -57,6 +58,13 @@
           UserService.getUser();
           clearBetSlip();
         })
+    }
+
+    function removeOneBet(idx) {
+      console.log(idx)
+      BetService.removeOneBet(idx)
+      vm.risks.splice(idx, 1)
+      vm.betSlip = getBetSlip();
     }
 
     function clearBetSlip() {

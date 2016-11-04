@@ -19,7 +19,8 @@
       betTeam1: betTeam1,
       betTeam2: betTeam2,
       clearBetSlip: clearBetSlip,
-      placeBet: placeBet
+      placeBet: placeBet,
+      removeOneBet: removeOneBet
     };
 
     function getBetSlip() {
@@ -43,6 +44,10 @@
     function clearBetSlip() {
       console.log('clear BS')
       betSlip = [];
+    }
+
+    function removeOneBet(idx) {
+      betSlip.splice(idx, 1);
     }
 
     function placeBet(betSlip, risks, user) {
