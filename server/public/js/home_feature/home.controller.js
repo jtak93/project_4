@@ -60,8 +60,13 @@
         })
     }
 
-    function removeOneBet(idx) {
+    function removeOneBet(idx, bet) {
       console.log(idx)
+      console.log(bet)
+      vm.removedMatches = MatchService.getRemovedMatches()
+      var rmIdx = vm.removedMatches.indexOf(bet)
+      console.log('rmIdx', rmIdx)
+      MatchService.replaceMatch(rmIdx)
       BetService.removeOneBet(idx)
       vm.risks.splice(idx, 1)
       vm.betSlip = getBetSlip();

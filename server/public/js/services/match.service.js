@@ -11,11 +11,15 @@
 
     // var baseUrl = process.env.BASE_URL;
     var allMatches = [];
+    var removedMatches = [];
 
     var service = {
       all: all,
       getUserMatches: getUserMatches,
-      removeMatch: remove
+      removeMatch: remove,
+      getRemovedMatches: getRemovedMatches,
+      replaceMatch: replaceMatch
+
     };
     return service;
 
@@ -38,7 +42,16 @@
                   });
     }
 
+    function replaceMatch(idx) {
+      allMatches.splice(idx, 0, removedMatches[idx])
+      removedMatches.splice(idx, 1)
+    }
+
+    function getRemovedMatches() {
+      return removedMatches
+    }
     function remove(idx) {
+      removedMatches.push(allMatches[idx]);
       allMatches.splice(idx, 1);
     }
   }

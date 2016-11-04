@@ -57,7 +57,7 @@
       <div ng-repeat="bet in home.betSlip track by $index" class="">
         <div class="bet-slip-bet">
           <div>
-            <a class="btn" ng-click="home.removeOneBet($index)" class="btn-danger">X</a>Game: {{bet.game}}
+            <a class="btn" ng-click="home.removeOneBet($index, bet)" class="btn-danger">X</a>Game: {{bet.game}}
           </div>
           <div>
             MATCH: {{bet.teams[0]}} vs. {{bet.teams[1]}}
