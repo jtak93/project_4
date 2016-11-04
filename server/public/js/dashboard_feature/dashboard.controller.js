@@ -9,6 +9,10 @@
 
   function DashboardCtrl($log, MatchService, BetService, UserService) {
     var vm = this;
+
+console.log('hey')
+
+    vm.getMatches = getMatches;
     vm.tabs = [{
             title: 'Profile',
             url: 'one.tpl.html'
@@ -29,6 +33,12 @@
     vm.isActiveTab = function(tabUrl) {
         return tabUrl == vm.currentTab;
     }
+
+    function getMatches() {
+      console.log('clicked!')
+    }
   }
+
+  console.log(this)
 
 })();

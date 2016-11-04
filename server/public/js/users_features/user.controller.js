@@ -15,11 +15,16 @@
     vm.noMatch = null;
     vm.userService = UserService;
     vm.getUser = getUser;
+    vm.getUserMatches = getUserMatches
 
     checkLoggedIn();
     // check if logged in
     function getUser() {
       return UserService.getUser();
+    }
+
+    function getUserMatches() {
+      console.log('clicked!')
     }
     function checkLoggedIn() {
       UserService.checkLoggedIn();

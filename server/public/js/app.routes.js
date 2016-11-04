@@ -13,15 +13,14 @@
         url: "/",
         controller: "HomeController",
         controllerAs: "home",
-        templateUrl: "src/home_feature/home.html"
+        templateUrl: "js/home_feature/home.html"
       })
       .state("dashboard", {
         url: "/dashboard",
         controller: "DashboardCtrl",
         controllerAs: "dash",
-        templateUrl: "src/dashboard_feature/dashboard.html"
+        templateUrl: "js/dashboard_feature/dashboard.html"
       })
-
     $urlRouterProvider.otherwise("/");
   }
 

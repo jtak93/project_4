@@ -1,4 +1,5 @@
 <h1>WELCOME TO DASHBOARD</h1>
+<button ng-click="dash.getMatches()">{{dash.tabs[0]}}</button>
 
 <ul class="tab">
     <li class="tab" ng-repeat="tab in dash.tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="dash.onClickTab(tab)">

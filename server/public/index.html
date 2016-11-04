@@ -8,15 +8,26 @@
   <meta name="author" content="">
   <title>Angular App</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="client_app/public/assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
   <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="client_app/lib/angular.js"></script>
-  <script src="client_app/lib/angular-ui-router.js"></script>
-  <script src="client_app/public/js/all.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/app.routes.js"></script>
+  <script src="js/services/auth.config.js"></script>
+  <script src="js/services/auth.interceptor.js"></script>
+  <script src="js/services/auth.token.service.js"></script>
+  <script src="js/services/bet.service.js"></script>
+  <script src="js/services/match.service.js"></script>
+  <script src="js/services/user.service.js"></script>
+  <script src="js/home_feature/home.controller.js"></script>
+  <script src="js/dashboard_feature/dashboard.controller.js"></script>
+  <script src="js/users_features/user.controller.js"></script>
+
 </head>
 <body ng-controller="UserController as user">
   <nav class="navbar navbar-default top-bar">
@@ -195,6 +206,7 @@
     </div>
   </div> <!-- CLOSES LOGIN/SIGNUP MODAL -->
   <script>
+  // handles local variable baseurl
     var baseUrl = (window.location.hostname === 'localhost') ? 'http://localhost:3000' : 'https://esport-lounge.herokuapp.com';
   </script>
 </body>

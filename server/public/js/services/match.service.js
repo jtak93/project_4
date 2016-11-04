@@ -9,11 +9,12 @@
 
   function MatchService($http, AuthTokenService, $window, $log) {
 
-    var baseUrl = 'http://localhost:3000';
+    // var baseUrl = process.env.BASE_URL;
     var allMatches = [];
 
     var service = {
       all: all,
+      getUserMatches: getUserMatches,
       removeMatch: remove
     };
     return service;
@@ -24,6 +25,15 @@
                   .then((matches) => {
                     // matches have virtual odds property
                     allMatches = matches.data;
+                    return matches;
+                  });
+    }
+
+    function getUserMatches(user) {
+      var url = `${baseUrl}/api/matches/user`;
+      return $http.post(url, {user})
+                  .then((matches) => {
+                    userMatches = matches.data;
                     return matches;
                   });
     }

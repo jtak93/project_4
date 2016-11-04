@@ -18,7 +18,7 @@ gulp.task('styles', ['scripts'], function() {
   return gulp.src([
     'src/**/*.css'])
     .pipe(concat('main.css'))
-    .pipe(gulp.dest('server/public/assets/css'));
+    .pipe(gulp.dest('server/public/stylesheets'));
 });
 
 gulp.task('default', ['scripts', 'styles']);
