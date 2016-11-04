@@ -5,11 +5,6 @@ var token = require('../config/token_auth');
 var userCtrl = require('../config/user_ctrl');
 var betCtrl = require('../controllers/bet_ctrl');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
 // use process.env.API_TOKEN for api token
 router.post('/login', token.create);
 
