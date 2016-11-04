@@ -35,6 +35,7 @@ body {
   }
   .sidebar-nav .navbar ul {
     float: none;
+    background-color: #773333 !important;
   }
   .sidebar-nav .navbar ul:not {
     display: block;
@@ -46,6 +47,7 @@ body {
   .sidebar-nav .navbar li a {
     padding-top: 12px;
     padding-bottom: 12px;
+    color: white;
   }
 }
 
@@ -117,7 +119,44 @@ li.tab {
   margin-left: -15px;
 }
 
+.match-box {
+  border: none
+}
 
+.match {
+  margin: 10px 0;
+}
+
+.tournament-name {
+  color: white;
+  background-color: #773333;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.team-1 {
+  background-color: #47463b;
+  color: white;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.team-2 {
+  background-color: #47463b;
+  color: white;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.table-border {
+  border-left: : 1px solid black;
+  border-right: : 1px solid black;
+}
+
+.bet-arrow-btn {
+  background-color: #415a9b;
+  color: white;
+}
 
 
 

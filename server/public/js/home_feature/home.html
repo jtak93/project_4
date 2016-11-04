@@ -1,44 +1,47 @@
 
-<div class="container-fluid">
+<div class="container-fluid match-box">
   <div class="row">
     <div class="col-sm-9">
-      <h1> SHOW MATCHES </h1>
+      <h1> All Games </h1>
       <div class="container-fluid matches">
-        <div class="row" ng-repeat="match in home.matches track by match._id">
-          <div class="col-sm-9">
+        <div class="row match" ng-repeat="match in home.matches track by match._id">
+          <div class="col-sm-11">
             <div class="container-fluid">
               <div class="row tournament-name">
-                <div class="col-sm-4">
+                <div class="col-sm-3 table-border">
                   {{ match.tournament }}
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2 table-border">
+                  {{ match.game }}
+                </div>
+                <div class="col-sm-2 table-border">
                   Odds
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5 table-border">
                   {{ match.date }}
                 </div>
               </div>
 
               <div class="row team-1">
-                <div class="col-sm-4">
+                <div class="col-sm-3 table-border">
                   {{ match.teams[0] }}
                 </div>
-                <div class="col-sm-6">
-                  {{ match.odds1 }}
+                <div class="col-sm-3 col-sm-offset-2 table-border">
+                  {{ match.odds1 | number : 4}}
                 </div>
-                <div class="col-sm-2 bet-arrow-btn">
-                  <button ng-if="user.user" ng-click="home.betTeam1(match)" class="btn">=></button>
+                <div class="col-sm-4 text-right table-border">
+                  <button ng-if="user.user" ng-click="home.betTeam1(match)" class="btn bet-arrow-btn">=></button>
                 </div>
               </div>
 
               <div class="row team-2">
-                <div class="col-sm-4">
+                <div class="col-sm-3 table-border">
                   {{ match.teams[1] }}
                 </div>
-                <div class="col-sm-6">
-                  {{ match.odds2 }}
+                <div class="col-sm-3 col-sm-offset-2 table-border">
+                  {{ match.odds2 | number : 4}}
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4 text-right table-border">
                   <button ng-if="user.user" ng-click="home.betTeam2(match)" class="btn bet-arrow-btn">=></button>
                 </div>
               </div>
