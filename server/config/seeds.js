@@ -86,6 +86,61 @@ var matches = [
   active: true,
   result: null,
   bets: []
+},
+{
+  game: 'LOL',
+  tournament: 'Tournament 1',
+  date: Date.now(),
+  teams: ['Random', 'Team'],
+  t1bet: 1,
+  t2bet: 1,
+  active: true,
+  result: null,
+  bets: []
+},
+{
+  game: 'DOTA 2',
+  tournament: 'Tournament 3',
+  date: Date.now(),
+  teams: ['XDwarriors', 'PogChamps'],
+  t1bet: 1,
+  t2bet: 1,
+  active: true,
+  result: null,
+  bets: []
+},
+{
+  game: 'CSGO',
+  tournament: 'Tournament 5',
+  date: Date.now(),
+  teams: ['LETS GO', 'LAKERS>WARRIORS'],
+  t1bet: 1,
+  t2bet: 1,
+  active: true,
+  result: null,
+  bets: []
+},
+{
+  game: 'DOTA 2',
+  tournament: 'The International',
+  date: Date.now(),
+  teams: ['Secret', 'Ehome'],
+  t1bet: 1,
+  t2bet: 1,
+  active: true,
+  result: null,
+  bets: []
+},
+{
+  game: 'LOL',
+  tournament: 'Worlds',
+  date: Date.now(),
+  teams: ['Dignitas', 'SK Telecom'],
+  t1bet: 1,
+  t2bet: 1,
+  active: true,
+  result: null,
+  bets: []
 }
 ]
 
