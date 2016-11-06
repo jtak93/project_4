@@ -19,6 +19,14 @@ router.get('/matches/active', function(req, res, next) {
     })
 });
 
+router.get('/matches/active/csgo', function(req, res, next) {
+  Match.find({'active' : true, 'game' : 'CSGO'})
+    .then(matches => {
+      console.log(matches)
+      res.json(matches);
+    })
+});
+
 router.post('/matches/user', function(req, res, next) {
   Match.find({'bets.userId': req.body.user._id }).exec()
     .then(matches => {

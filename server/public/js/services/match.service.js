@@ -11,10 +11,12 @@
 
     // var baseUrl = process.env.BASE_URL;
     var allMatches = [];
+    var allCSGOMatches = [];
     var removedMatches = [];
 
     var service = {
       allActive: allActive,
+      allCSGO: allCSGO,
       getUserMatches: getUserMatches,
       removeMatch: remove,
       getRemovedMatches: getRemovedMatches,
@@ -43,6 +45,17 @@
                     allMatches = matches.data;
                     return matches;
                   });
+    }
+
+    function allCSGO() {
+      var url = `${baseUrl}/api/matches/active/csgo`
+      return $http.get(url)
+                  .then((matches) => {
+                    // matches have virtual odds property
+                    allCSGOMatches = matches;
+                    return matches;
+                  });
+
     }
 
     function getUserMatches(user) {

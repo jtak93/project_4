@@ -3,17 +3,18 @@
 
   angular
     .module("app")
-    .controller("HomeController", HomeController);
+    .controller("CsgoController", CsgoController);
 
-  HomeController.$inject = ["$log", "MatchService", "BetService", "UserService"];
+  CsgoController.$inject = ["$log", "MatchService", "BetService", "UserService"];
 
-  function HomeController($log, MatchService, BetService, UserService) {
+  function CsgoController($log, MatchService, BetService, UserService) {
     var vm = this;
-    vm.matches = MatchService.allActive()
+    vm.matches = MatchService.allCSGO()
       .then( matches => vm.matches = matches.data)
     vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
     vm.risks = [];
+    vm.removedMatches = [];
 
     vm.totalRisk = riskSum;
     vm.removeOneBet = removeOneBet;
@@ -32,7 +33,7 @@
     function betTeam1(match) {
       vm.risks.push(null);
       var idx = vm.matches.indexOf(match)
-      MatchService.removeMatch(idx);
+      removeMatch(idx);
       return BetService.betTeam1(match);
       // use service to make AJAX to server
     }
@@ -40,7 +41,7 @@
     function betTeam2(match) {
       vm.risks.push(null);
       var idx = vm.matches.indexOf(match)
-      MatchService.removeMatch(idx);
+      removeMatch(idx);
       return BetService.betTeam2(match);
       // use service to make AJAX to server
     }
@@ -66,10 +67,9 @@
     function removeOneBet(idx, bet) {
       console.log(idx)
       console.log(bet)
-      vm.removedMatches = MatchService.getRemovedMatches()
       var rmIdx = vm.removedMatches.indexOf(bet)
       console.log('rmIdx', rmIdx)
-      MatchService.replaceMatch(rmIdx)
+      replaceMatch(rmIdx)
       BetService.removeOneBet(idx)
       vm.risks.splice(idx, 1)
       vm.betSlip = getBetSlip();
@@ -77,12 +77,22 @@
 
     function clearBetSlip() {
       console.log("clicked clear BS")
-      MatchService.allActive()
+      MatchService.allCSGO()
               .then( matchesRes => vm.matches = matchesRes.data)
       BetService.clearBetSlip();
       vm.risks = [];
       vm.betSlip = getBetSlip();
       return vm.betSlip;
+    }
+
+    function removeMatch(idx) {
+      vm.removedMatches.push(vm.matches[idx]);
+      vm.matches.splice(idx, 1);
+    }
+
+    function replaceMatch(idx) {
+      vm.matches.splice(idx, 0, vm.removedMatches[idx])
+      vm.removedMatches.splice(idx, 1)
     }
   }
 

@@ -3,13 +3,13 @@
 
   angular
     .module("app")
-    .controller("HomeController", HomeController);
+    .controller("CsgoController", CsgoController);
 
-  HomeController.$inject = ["$log", "MatchService", "BetService", "UserService"];
+  CsgoController.$inject = ["$log", "MatchService", "BetService", "UserService"];
 
-  function HomeController($log, MatchService, BetService, UserService) {
+  function CsgoController($log, MatchService, BetService, UserService) {
     var vm = this;
-    vm.matches = MatchService.allActive()
+    vm.matches = MatchService.allCSGO()
       .then( matches => vm.matches = matches.data)
     vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
@@ -21,9 +21,6 @@
     vm.betTeam2 = betTeam2;
     vm.placeBet = placeBet;
     vm.clearBetSlip = clearBetSlip;
-
-    // clear betslip when initialized
-    clearBetSlip();
 
     function getBetSlip() {
       return BetService.getBetSlip()

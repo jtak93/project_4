@@ -15,6 +15,12 @@
         controllerAs: "home",
         templateUrl: "js/home_feature/home.html"
       })
+      .state("csgo", {
+        url: "/csgo",
+        controller: "CsgoController",
+        controllerAs: "csgo",
+        templateUrl: "js/csgo_feature/csgo.html"
+      })
       .state("dashboard", {
         url: "/dashboard",
         controller: "DashboardCtrl",
