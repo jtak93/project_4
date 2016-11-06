@@ -14,7 +14,7 @@
     var removedMatches = [];
 
     var service = {
-      all: all,
+      allActive: allActive,
       getUserMatches: getUserMatches,
       removeMatch: remove,
       getRemovedMatches: getRemovedMatches,
@@ -23,8 +23,20 @@
     };
     return service;
 
+    // Use to get all past matches
     function all() {
       var url = `${baseUrl}/api/matches`
+      return $http.get(url)
+                  .then((matches) => {
+                    // matches have virtual odds property
+                    allMatches = matches.data;
+                    return matches;
+                  });
+    }
+
+    // only gets matches where 'active' : true
+    function allActive() {
+      var url = `${baseUrl}/api/matches/active`
       return $http.get(url)
                   .then((matches) => {
                     // matches have virtual odds property

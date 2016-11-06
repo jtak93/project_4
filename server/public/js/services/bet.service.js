@@ -11,7 +11,7 @@
 
     // var baseUrl = process.env.BASE_URL;
     var betSlip = [];
-    var matches = MatchService.all()
+    var matches = MatchService.allActive()
         .then( matchesRes => matches = matchesRes.data)
 
     var betService = {

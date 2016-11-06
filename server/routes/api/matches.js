@@ -6,6 +6,15 @@ var Match = require('../../models/match')
 router.get('/matches', function(req, res, next) {
   Match.find({})
     .then(matches => {
+      console.log(matches)
+      res.json(matches);
+    })
+});
+
+router.get('/matches/active', function(req, res, next) {
+  Match.find({'active' : true})
+    .then(matches => {
+      console.log(matches)
       res.json(matches);
     })
 });

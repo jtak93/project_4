@@ -9,7 +9,7 @@
 
   function HomeController($log, MatchService, BetService, UserService) {
     var vm = this;
-    vm.matches = MatchService.all()
+    vm.matches = MatchService.allActive()
       .then( matches => vm.matches = matches.data)
     vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
@@ -74,7 +74,7 @@
 
     function clearBetSlip() {
       console.log("clicked clear BS")
-      MatchService.all()
+      MatchService.allActive()
               .then( matchesRes => vm.matches = matchesRes.data)
       BetService.clearBetSlip();
       vm.risks = [];
