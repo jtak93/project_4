@@ -17,6 +17,8 @@
     var service = {
       allActive: allActive,
       allCSGO: allCSGO,
+      allLOL: allLOL,
+      allDota2: allDota2,
       getUserMatches: getUserMatches,
       removeMatch: remove,
       getRemovedMatches: getRemovedMatches,
@@ -55,7 +57,27 @@
                     allCSGOMatches = matches;
                     return matches;
                   });
+    }
 
+    function allLOL() {
+      var url = `${baseUrl}/api/matches/active/lol`
+      return $http.get(url)
+                  .then((matches) => {
+                    // matches have virtual odds property
+                    allCSGOMatches = matches;
+                    return matches;
+                  });
+    }
+
+
+    function allDota2() {
+      var url = `${baseUrl}/api/matches/active/dota2`
+      return $http.get(url)
+                  .then((matches) => {
+                    // matches have virtual odds property
+                    allCSGOMatches = matches;
+                    return matches;
+                  });
     }
 
     function getUserMatches(user) {

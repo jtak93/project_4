@@ -10,7 +10,10 @@
   function CsgoController($log, MatchService, BetService, UserService) {
     var vm = this;
     vm.matches = MatchService.allCSGO()
-      .then( matches => vm.matches = matches.data)
+      .then( matches => {
+        vm.matches = matches.data;
+        vm.gameName = matches.data[0].game
+      })
     vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
     vm.risks = [];

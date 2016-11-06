@@ -27,6 +27,22 @@ router.get('/matches/active/csgo', function(req, res, next) {
     })
 });
 
+router.get('/matches/active/lol', function(req, res, next) {
+  Match.find({'active' : true, 'game' : 'LOL'})
+    .then(matches => {
+      console.log(matches)
+      res.json(matches);
+    })
+});
+
+router.get('/matches/active/dota2', function(req, res, next) {
+  Match.find({'active' : true, 'game' : 'DOTA 2'})
+    .then(matches => {
+      console.log(matches)
+      res.json(matches);
+    })
+});
+
 router.post('/matches/user', function(req, res, next) {
   Match.find({'bets.userId': req.body.user._id }).exec()
     .then(matches => {

@@ -2,9 +2,9 @@
 <div class="container-fluid match-box">
   <div class="row">
     <div class="col-sm-9">
-      <h1> Counter Strike: Global Offensive </h1>
+      <h1> {{game.gameName}} </h1>
       <div class="container-fluid matches">
-        <div class="row match" ng-repeat="match in csgo.matches track by match._id">
+        <div class="row match" ng-repeat="match in game.matches track by match._id">
           <div class="col-sm-11">
             <div class="container-fluid">
               <div class="row tournament-name">
@@ -30,7 +30,7 @@
                   {{ match.odds1 | number : 4}}
                 </div>
                 <div class="col-sm-4 text-right table-border">
-                  <button ng-if="user.user" ng-click="csgo.betTeam1(match)" class="btn bet-arrow-btn">=></button>
+                  <button ng-if="user.user" ng-click="game.betTeam1(match)" class="btn bet-arrow-btn">=></button>
                 </div>
               </div>
 
@@ -42,7 +42,7 @@
                   {{ match.odds2 | number : 4}}
                 </div>
                 <div class="col-sm-4 text-right table-border">
-                  <button ng-if="user.user" ng-click="csgo.betTeam2(match)" class="btn bet-arrow-btn">=></button>
+                  <button ng-if="user.user" ng-click="game.betTeam2(match)" class="btn bet-arrow-btn">=></button>
                 </div>
               </div>
 
@@ -55,11 +55,11 @@
       <div class="">
         BETSLIP
       </div>
-      <form ng-submit="csgo.placeBet(user.user)">
-      <div ng-repeat="bet in csgo.betSlip track by $index" class="">
+      <form ng-submit="game.placeBet(user.user)">
+      <div ng-repeat="bet in game.betSlip track by $index" class="">
         <div class="bet-slip-bet">
           <div>
-            <a class="btn" ng-click="csgo.removeOneBet($index, bet)" class="btn-danger">X</a>Game: {{bet.game}}
+            <a class="btn" ng-click="game.removeOneBet($index, bet)" class="btn-danger">X</a>Game: {{bet.game}}
           </div>
           <div>
             MATCH: {{bet.teams[0]}} vs. {{bet.teams[1]}}
@@ -68,15 +68,15 @@
             PICK: {{bet.teamPick}}
           </div>
           <label class="control-label" for="Risk">Risk:</label>
-          <input class="risk-input" ng-model="csgo.risks[$index]" type="number" required>
+          <input class="risk-input" ng-model="game.risks[$index]" type="number" required>
         </div>
       </div>
-      <div ng-if="csgo.risks.length > 0">
+      <div ng-if="game.risks.length > 0">
         <div>
-          TOTAL RISK: {{csgo.totalRisk()}}
+          TOTAL RISK: {{game.totalRisk()}}
         </div>
         <button class="btn btn-success">Place Bets</button>
-        <button ng-click="csgo.clearBetSlip()" class="btn btn-danger">Remove Bets</button>
+        <button ng-click="game.clearBetSlip()" class="btn btn-danger">Remove Bets</button>
       </div>
       </form>
     </div> <!-- closes bet-slip -->

@@ -18,8 +18,20 @@
       .state("csgo", {
         url: "/csgo",
         controller: "CsgoController",
-        controllerAs: "csgo",
-        templateUrl: "js/csgo_feature/csgo.html"
+        controllerAs: "game",
+        templateUrl: "js/csgo_feature/game.html"
+      })
+      .state("lol", {
+        url: "/lol",
+        controller: "LolController",
+        controllerAs: "game",
+        templateUrl: "js/csgo_feature/game.html"
+      })
+      .state("dota2", {
+        url: "/dota2",
+        controller: "Dota2Controller",
+        controllerAs: "game",
+        templateUrl: "js/csgo_feature/game.html"
       })
       .state("dashboard", {
         url: "/dashboard",

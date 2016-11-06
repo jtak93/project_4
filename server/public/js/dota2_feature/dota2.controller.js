@@ -3,17 +3,17 @@
 
   angular
     .module("app")
-    .controller("LolController", LolController);
+    .controller("Dota2Controller", Dota2Controller);
 
-  LolController.$inject = ["$log", "MatchService", "BetService", "UserService"];
+  Dota2Controller.$inject = ["$log", "MatchService", "BetService", "UserService"];
 
-  function LolController($log, MatchService, BetService, UserService) {
+  function Dota2Controller($log, MatchService, BetService, UserService) {
     var vm = this;
-    vm.matches = MatchService.allLOL()
-    .then( matches => {
-      vm.matches = matches.data;
-      vm.gameName = matches.data[0].game
-    })
+    vm.matches = MatchService.allDota2()
+      .then( matches => {
+        vm.matches = matches.data;
+        vm.gameName = matches.data[0].game
+      })
     vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
     vm.risks = [];
@@ -80,7 +80,7 @@
 
     function clearBetSlip() {
       console.log("clicked clear BS")
-      MatchService.allLOL()
+      MatchService.allDota2()
               .then( matchesRes => vm.matches = matchesRes.data)
       BetService.clearBetSlip();
       vm.risks = [];
