@@ -27,8 +27,30 @@ body {
   border-color: black;
 }
 
+.side-nav-account {
+  padding-top: 140%;
+}
+
+.side-nav-login {
+  padding-top: 150%;
+}
+.sidebar-nav {
+  width: 20%;
+  margin-top: -52px;
+  position: fixed;
+}
+
+.sidebar-last-link {
+  margin-bottom: 100%
+}
+
+.all-games-link {
+  margin-top: 5vw;
+}
+
+
 /* make sidebar nav vertical */
-@media (min-width: 768px) {
+@media (min-width: 400px) {
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -50,6 +72,16 @@ body {
     color: white;
   }
 }
+
+/*for responsive nav*/
+
+@media (max-width: 768px) {
+  .side-nav-account {
+      padding-top: 180%;
+  }
+}
+
+
 
 /* Style the list */
 ul.tab {
@@ -79,6 +111,17 @@ li.tab {
 
 .top-bar {
   background-color: #47463b;
+  margin-left: 19.8vw;
+}
+
+.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {
+    top: auto;
+    bottom: 10%;
+    margin-bottom: 2px;
+}
+
+.dropdown-menu {
+  width: 99%;
 }
 
 .nav-link {
