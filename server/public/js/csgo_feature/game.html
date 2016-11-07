@@ -75,7 +75,8 @@
         <div>
           TOTAL RISK: {{game.totalRisk()}}
         </div>
-        <button class="btn btn-success">Place Bets</button>
+        <button ng-if="!game.confirm" ng-click="game.setConfirm()" class="btn btn-success">Place Bets</button>
+        <button ng-if="game.confirm" class="btn btn-warning">Confirm Bets</button>
         <button ng-click="game.clearBetSlip()" class="btn btn-danger">Remove Bets</button>
       </div>
       </form>

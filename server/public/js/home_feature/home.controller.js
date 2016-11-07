@@ -14,6 +14,7 @@
     vm.betSlip = getBetSlip();
     vm.betSlipIndices = [];
     vm.risks = [];
+    vm.confirm = false;
 
     vm.totalRisk = riskSum;
     vm.removeOneBet = removeOneBet;
@@ -21,6 +22,7 @@
     vm.betTeam2 = betTeam2;
     vm.placeBet = placeBet;
     vm.clearBetSlip = clearBetSlip;
+    vm.setConfirm = setConfirm;
 
     // clear betslip when initialized
     clearBetSlip();
@@ -81,8 +83,13 @@
               .then( matchesRes => vm.matches = matchesRes.data)
       BetService.clearBetSlip();
       vm.risks = [];
+      vm.confirm = false;
       vm.betSlip = getBetSlip();
       return vm.betSlip;
+    }
+
+    function setConfirm() {
+      vm.confirm = true;
     }
   }
 
