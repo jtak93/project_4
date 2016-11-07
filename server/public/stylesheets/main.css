@@ -73,6 +73,10 @@ body {
   }
 }
 
+.resp-matches {
+  display: none !important;
+}
+
 /*for responsive nav*/
 
 @media (max-width: 780px) {
@@ -81,6 +85,9 @@ body {
   }
   .top-bar {
     margin-left: 0 !important;
+  }
+  .resp-matches {
+    display: block !important;
   }
 }
 
