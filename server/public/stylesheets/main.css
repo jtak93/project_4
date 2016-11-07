@@ -75,9 +75,12 @@ body {
 
 /*for responsive nav*/
 
-@media (max-width: 768px) {
-  .side-nav-account {
-      padding-top: 180%;
+@media (max-width: 780px) {
+  .sidebar-nav {
+    display: none;
+  }
+  .top-bar {
+    margin-left: 0 !important;
   }
 }
 
