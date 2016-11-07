@@ -83,11 +83,30 @@ body {
   .sidebar-nav {
     display: none;
   }
+
   .top-bar {
     margin-left: 0 !important;
   }
+
   .resp-matches {
     display: block !important;
+  }
+
+  .resp-matches > a {
+    color: white !important;
+  }
+
+  .resp-matches > a:hover {
+    cursor: pointer;
+    background-color: black !important;
+  }
+
+  .resp-matches > ul > li > a {
+    color: white !important;
+  }
+
+  .resp-matches > ul > li > a:hover {
+    background-color: black !important;
   }
 }
 
