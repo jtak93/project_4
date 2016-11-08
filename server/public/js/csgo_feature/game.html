@@ -30,7 +30,7 @@
                   {{ match.odds1 | number : 4}}
                 </div>
                 <div class="col-sm-4 text-right table-border">
-                  <button ng-if="user.user" ng-click="game.betTeam1(match)" class="btn bet-arrow-btn">=></button>
+                  <button ng-if="user.user" ng-click="game.betTeam1(match)" class="btn bet-arrow-btn"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></button>
                 </div>
               </div>
 
@@ -42,7 +42,7 @@
                   {{ match.odds2 | number : 4}}
                 </div>
                 <div class="col-sm-4 text-right table-border">
-                  <button ng-if="user.user" ng-click="game.betTeam2(match)" class="btn bet-arrow-btn">=></button>
+                  <button ng-if="user.user" ng-click="game.betTeam2(match)" class="btn bet-arrow-btn"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></button>
                 </div>
               </div>
 
