@@ -13,6 +13,7 @@
     var allMatches = [];
     var allCSGOMatches = [];
     var removedMatches = [];
+    var userMatches = [];
 
     var service = {
       allActive: allActive,
@@ -80,10 +81,13 @@
                   });
     }
 
-    function getUserMatches(user) {
+    function getUserMatches(userId) {
+      console.log("match service get user matches")
       var url = `${baseUrl}/api/matches/user`;
-      return $http.post(url, {user})
+      console.log(userId)
+      return $http.post(url, {userId})
                   .then((matches) => {
+                    console.log(matches)
                     userMatches = matches.data;
                     return matches;
                   });

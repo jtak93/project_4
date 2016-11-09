@@ -44,7 +44,7 @@ router.get('/matches/active/dota2', function(req, res, next) {
 });
 
 router.post('/matches/user', function(req, res, next) {
-  Match.find({'bets.userId': req.body.user._id }).exec()
+  Match.find({'bets.userId': req.body.userId }).exec()
     .then(matches => {
       res.json(matches);
     })

@@ -1,6 +1,4 @@
 <h1>WELCOME TO DASHBOARD</h1>
-<button ng-click="dash.getMatches()">{{dash.tabs[0]}}</button>
-
 <ul class="tab">
     <li class="tab" ng-repeat="tab in dash.tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="dash.onClickTab(tab)">
         {{tab.title}}
@@ -21,36 +19,38 @@
   <div id="viewTwo">
     <h1>My Active Bets</h1>
     <div class="container-fluid myBets">
-      <div class="row" ng-repeat="bet in user.user.bets">
+      <div class="row" ng-repeat="match in dash.userMatches">
+      <div class="row bet-box" ng-repeat="bet in match.bets | filter:{ userId: user.user._id }">
         <div class="col-sm-9">
           <div class="container-fluid">
 
             <div class="row tournament-name">
               <div class="col-sm-4">
-                {{ bet.tournament }}
+                {{ match.tournament }}
               </div>
               <div class="col-sm-4">
-                {{ bet.risk }}
+                Odds
               </div>
               <div class="col-sm-4">
-                {{ bet.team }}
+                Placeholder
               </div>
             </div>
 
             <div class="row team-1">
               <div class="col-sm-4">
-                {{ bet.teams[0] }} vs. {{ bet.teams[1] }}
+                {{ match.teams[0] }} vs. {{ match.teams[1] }}
               </div>
-              <div class="col-sm-6">
-                {{ bet.odds1 }}
+              <div class="col-sm-4">
+                Pick: {{ bet.team }}
               </div>
-              <div class="col-sm-2 bet-arrow-btn">
-                <button ng-if="user.user" ng-click="home.betTeam1(bet)" class="btn">=></button>
+              <div class="col-sm-4">
+                Risk: {{ bet.risk }}
               </div>
             </div>
           </div>
         </div>
       </div> <!-- closes ng-repeat -->
+      </div>
     </div> <!-- closes myBets -->
     </div>
 </script>
