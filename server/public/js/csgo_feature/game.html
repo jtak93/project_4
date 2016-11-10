@@ -14,11 +14,11 @@
                 <div class="col-sm-2 table-border">
                   {{ match.game }}
                 </div>
-                <div class="col-sm-2 table-border">
+                <div class="col-sm-3 table-border">
                   Odds
                 </div>
-                <div class="col-sm-5 table-border">
-                  {{ match.date }}
+                <div class="col-sm-4 table-border">
+                  Date: {{ match.date | date : 'MM/dd/yy HH:mm' }}
                 </div>
               </div>
 
