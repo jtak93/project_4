@@ -11,8 +11,7 @@ var users = [
     email: 'admin@email.com',
     birthday: Date.now(),
     balance: 10000,
-    inPlay: 0,
-    bets: []
+    inPlay: 0
   }
 ];
 

@@ -12,8 +12,7 @@ var userSchema = new mongoose.Schema({
   inPlay: {
     type: Number,
     default: 0
-  },
-  matches: [matchSchema]
+  }
 });
 
 // add bcrypt hashing to model (works on a password field)!
