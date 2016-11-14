@@ -1,4 +1,4 @@
-<h1>WELCOME TO DASHBOARD</h1>
+<h1 class="white-text">DASHBOARD</h1>
 <ul class="tab">
     <li class="tab" ng-repeat="tab in dash.tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="dash.onClickTab(tab)">
         {{tab.title}}
@@ -9,13 +9,13 @@
 </div>
 <script type="text/ng-template" id="one.tpl.html">
 <div id="viewOne">
-  <h1>Profile</h1>
+  <h1 class="white-text">Profile</h1>
 </div>
 </script>
 
 <script type="text/ng-template" id="two.tpl.html">
   <div id="viewTwo">
-    <h1>My Active Bets</h1>
+    <h1 class="white-text">My Active Bets</h1>
     <div class="container-fluid myBets">
       <div class="row" ng-repeat="match in dash.userMatches">
       <div class="row bet-box" ng-repeat="bet in match.bets | filter:{ userId: user.user._id }">
@@ -55,7 +55,7 @@
 
 <script type="text/ng-template" id="three.tpl.html">
   <div id="viewThree">
-    <h1>All Bets</h1>
+    <h1 class="white-text">All Bets</h1>
     <div class="container-fluid">
       <div class="row">
         <div ng-repeat="bet in user.user.bets">
