@@ -26,9 +26,9 @@ matchSchema.virtual('odds1').get(function () {
   var total = this.t1bet + this.t2bet
   var rakedTotal = total * 0.95
   if (this.t1bet < 500 || this.t2bet < 500) {
-    return .95
+    return 1.95
   } else {
-    var num = (rakedTotal - this.t1bet) / this.t1bet
+    var num = (rakedTotal - this.t1bet) / this.t1bet + 1
     return num;
   }
   // 'this' represents the match document
@@ -39,9 +39,9 @@ matchSchema.virtual('odds2').get(function () {
   var total = this.t1bet + this.t2bet
   var rakedTotal = total * 0.95
   if (this.t1bet < 500 || this.t2bet < 500) {
-    return .95
+    return 1.95
   } else {
-    var num = (rakedTotal - this.t2bet) / this.t2bet
+    var num = (rakedTotal - this.t2bet) / this.t2bet + 1
     return num;
   }
   // 'this' represents the match document
