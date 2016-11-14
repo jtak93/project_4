@@ -3,7 +3,7 @@
 Welcome to Esports Lounge, a place to add a little fun to your esports viewing parties!
 Bet on games, win e-coins, and show your superior knowledge of the scene.
 ```
-TODO: SHOW PICTURES
+TODO: SHOW PICTURES OF FINISHED PRODUCT
 
 ## Relevant Links
 
@@ -29,7 +29,9 @@ trello board). Initially, I created the app as two separate client and server si
 however, this led to a problem with herokus deployment. First, I handled user sign up and login
 using JSON web tokens. This was the only smooth part of development. I began to add features to my trello board and todo list and began tackling the list one by one. I developed by feature, going back and forth between the front and back end.
 
-Some time into development, I ran into many complications and problems with my data model structures and began to restructure. Im not finished yet.... (TODO: rest of project)
+Some time into development, I ran into many complications and problems with my data model structures and began to restructure. I then began to work on the display of information from the
+server side to the client side. This was mainly done using AJAX calls on a server API. From there, I began to query different results to implement filtering features and also worked on styling the
+pages. I still need to work on some of the business logic/payout system and also need to incorporate real time data from a third party API.
 
 ## Installation
 Use 
