@@ -59,15 +59,15 @@
       <div ng-repeat="bet in game.betSlip track by $index" class="">
         <div class="bet-slip-bet">
           <div>
-            <a class="btn" ng-click="game.removeOneBet($index, bet)" class="btn-danger">X</a>Game: {{bet.game}}
+            <a class="btn x-color" ng-click="game.removeOneBet($index, bet)">X</a>Game: {{bet.game}}
           </div>
-          <div>
+          <div class="padding-left-5">
             MATCH: {{bet.teams[0]}} vs. {{bet.teams[1]}}
           </div>
-          <div>
+          <div class="padding-left-5">
             PICK: {{bet.teamPick}}
           </div>
-          <label class="control-label" for="Risk">Risk:</label>
+          <label class="control-label padding-left-5" for="Risk">Risk:</label>
           <input class="risk-input" ng-model="game.risks[$index]" type="number" required>
         </div>
       </div>
@@ -75,9 +75,9 @@
         <div>
           TOTAL RISK: {{game.totalRisk()}}
         </div>
-        <button ng-if="!game.confirm" ng-click="game.setConfirm()" class="btn btn-success">Place Bets</button>
-        <button ng-if="game.confirm" class="btn btn-warning">Confirm Bets</button>
-        <button ng-click="game.clearBetSlip()" class="btn btn-danger">Remove Bets</button>
+        <button ng-if="!game.confirm" ng-click="game.setConfirm()" class="btn btn-info btn-vert-spacing center-block">Place Bets</button>
+        <button ng-if="game.confirm" class="btn btn-warning btn-vert-spacing center-block">Confirm Bets</button>
+        <button ng-click="game.clearBetSlip()" class="btn btn-danger remove-bets-btn center-block">Remove Bets</button>
       </div>
       </form>
     </div> <!-- closes bet-slip -->

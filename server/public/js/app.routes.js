@@ -43,6 +43,12 @@
         controllerAs: "dash",
         templateUrl: "js/dashboard_feature/dashboard.html"
       })
+      .state("dashboard2", {
+        url: "/dashboard",
+        controller: "DashboardCtrl",
+        controllerAs: "dash",
+        templateUrl: "js/dashboard_feature/dashboard.html"
+      })
     $urlRouterProvider.otherwise("/");
   }
 

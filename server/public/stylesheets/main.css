@@ -53,6 +53,15 @@ body {
   margin-top: 5vw;
 }
 
+.side-nav-link:hover {
+  cursor: pointer;
+  background-color: darkgray !important;
+}
+
+.sidebar-nav {
+  margin-left: -15px;
+}
+
 
 /* make sidebar nav vertical */
 @media (min-width: 400px) {
@@ -167,41 +176,50 @@ li.tab {
   background-color: black !important;
 }
 
+/* Bet slip */
+
 .bet-slip {
   border: 1px solid black !important;
   border-radius: 5px;
   background-color: #47463b;
   color: white;
   margin-top: 20px;
-  text-align: center
+  text-align: left;
 }
 
 .bet-slip-bet {
-  margin: 0 -10px;
+  margin: 5px -10px;
   border: 1px solid black !important;
   border-radius: 5px;
+  color: black;
+  background-color: #009a9a;
 }
 
 .risk-input {
-  width: 8vw;
+  width: 75%;
   color:black;
+  margin-bottom: 10px;
 }
 
-.side-nav-link:hover {
-  cursor: pointer;
-  background-color: darkgray !important;
+.btn-vert-spacing {
+  margin: 5px auto;
 }
 
-.sidebar-nav {
-  margin-left: -15px;
-}
-
+/* Matches */
 .match-box {
   border: none
 }
 
 .match {
   margin: 10px 0;
+}
+
+.x-color {
+  color: red;
+}
+
+.padding-left-5 {
+  padding-left: 5px;
 }
 
 .tournament-name {

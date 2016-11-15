@@ -59,7 +59,7 @@
       <div ng-repeat="bet in home.betSlip track by $index" class="">
         <div class="bet-slip-bet">
           <div>
-            <a class="btn" ng-click="home.removeOneBet($index, bet)" class="btn-danger">X</a>Game: {{bet.game}}
+            <a class="btn x-color" ng-click="home.removeOneBet($index, bet)">X</a>Game: {{bet.game}}
           </div>
           <div>
             MATCH: {{bet.teams[0]}} vs. {{bet.teams[1]}}
@@ -75,9 +75,9 @@
         <div>
           TOTAL RISK: {{home.totalRisk()}}
         </div>
-        <button ng-if="!home.confirm" ng-click="home.setConfirm()" class="btn btn-success">Place Bets</button>
-        <button ng-if="home.confirm" class="btn btn-warning">Confirm Bets</button>
-        <button ng-click="home.clearBetSlip()" class="btn btn-danger">Remove Bets</button>
+        <button ng-if="!home.confirm" ng-click="home.setConfirm()" class="btn btn-info btn-vert-spacing center-block">Place Bets</button>
+        <button ng-if="home.confirm" class="btn btn-warning btn-vert-spacing center-block">Confirm Bets</button>
+        <button ng-click="home.clearBetSlip()" class="btn btn-danger btn-vert-spacing center-block">Remove Bets</button>
       </div>
       </form>
     </div> <!-- closes bet-slip -->

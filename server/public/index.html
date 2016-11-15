@@ -62,10 +62,10 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li ng-if="user.user"><a href="#" class="nav-link">Balance: {{user.getUser().balance}}</a></li>
-          <li ng-if="user.user"><a href="#" class="nav-link">In Play: {{user.getUser().inPlay}}</a></li>
+          <li ng-if="user.user"><a class="nav-link">Balance: {{user.getUser().balance}}</a></li>
+          <li ng-if="user.user"><a class="nav-link">In Play: {{user.getUser().inPlay}}</a></li>
           <li ng-if="!user.user"><button class="btn btn-danger btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Log In/Register</button></li>
-          <li ng-if="user.user"><a href="#" class="nav-link">Welcome, {{user.user.username}}</a></li>
+          <li ng-if="user.user"><a class="nav-link">Welcome, {{user.user.username}}</a></li>
           <li ng-if="user.user"><a ng-click="user.logout()" class="nav-link">Log Out</a></li>
         </ul>
       </div> <!-- /.navbar-collapse -->
@@ -85,11 +85,9 @@
             <li class="dropup side-nav-account" ng-if="user.user">
               <a class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">My Bets</a></li>
-                <li><a href="#">Friends</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Contact us</li>
+                <li><a ui-sref="dashboard">Dashboard</a></li>
+                <li><a ui-sref="dashboard2">My Bets</a></li>
+                <li><a href="#">Contact Us</a></li>
               </ul>
             </li>
             <li class="sidebar-last-link" ng-if="user.user"><a ng-click="user.logout()" class="side-nav-link">Log Out</a></li>
