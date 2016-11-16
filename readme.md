@@ -3,7 +3,8 @@
 Welcome to Esports Lounge, a place to add a little fun to your esports viewing parties!
 Bet on games, win e-coins, and show your superior knowledge of the scene.
 ```
-TODO: SHOW PICTURES OF FINISHED PRODUCT
+![Image of Home]
+(http://imgur.com/a/Q9lbw)
 
 ## Relevant Links
 
