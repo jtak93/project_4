@@ -32,6 +32,35 @@ body {
   border-color: black;
 }
 
+.top-bar {
+  background-color: #47463b;
+  margin-right: -15px !important;
+}
+
+@media (min-width: 1000px) {
+  .top-bar {
+    margin-left: 0px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .top-bar {
+    margin-left: 10px !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  .top-bar {
+    margin-left: 20px !important;
+  }
+}
+
+@media (min-width: 1800px) {
+  .top-bar {
+    margin-left: 30px !important;
+  }
+}
+
 .side-nav-account {
   padding-top: 140%;
 }
@@ -40,6 +69,7 @@ body {
   padding-top: 150%;
 }
 .sidebar-nav {
+  z-index: 1000;
   width: 20%;
   margin-top: -52px;
   position: fixed;
@@ -93,13 +123,13 @@ body {
 
 /*for responsive nav*/
 
-@media (max-width: 780px) {
+@media (max-width: 768px) {
   .sidebar-nav {
     display: none;
   }
 
   .top-bar {
-    margin-left: 0 !important;
+    margin-left: -100px !important;
   }
 
   .resp-matches {
@@ -152,10 +182,6 @@ li.tab {
     color: #000;
 }
 
-.top-bar {
-  background-color: #47463b;
-  margin-left: 19.8vw;
-}
 
 .dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {
     top: auto;

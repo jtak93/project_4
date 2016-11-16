@@ -58,16 +58,16 @@
       <form ng-submit="home.placeBet(user.user)">
       <div ng-repeat="bet in home.betSlip track by $index" class="">
         <div class="bet-slip-bet">
-          <div>
+          <div class="padding-left-5">
             <a class="btn x-color" ng-click="home.removeOneBet($index, bet)">X</a>Game: {{bet.game}}
           </div>
-          <div>
+          <div class="padding-left-5">
             MATCH: {{bet.teams[0]}} vs. {{bet.teams[1]}}
           </div>
-          <div>
+          <div class="padding-left-5">
             PICK: {{bet.teamPick}}
           </div>
-          <label class="control-label" for="Risk">Risk:</label>
+          <label class="control-label padding-left-5" for="Risk">Risk:</label>
           <input class="risk-input" ng-model="home.risks[$index]" type="number" required>
         </div>
       </div>
