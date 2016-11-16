@@ -3,15 +3,13 @@
 Welcome to Esports Lounge, a place to add a little fun to your esports viewing parties!
 Bet on games, win e-coins, and show your superior knowledge of the scene.
 ```
-![Image of Home]
-(http://imgur.com/a/Q9lbw)
+![Image of Home](./server/public/images/home-pic.png)
 
 ## Relevant Links
 
 - Deployed App: https://esport-lounge.herokuapp.com/
 - Github Repo: https://github.com/jtak93/project_4
 - Trello Board: https://trello.com/b/WxwSDxID/wdi-final-project
-
 
 ## Technologies
 I used the MEAN stack:
@@ -48,6 +46,8 @@ to install all node modules necessary for local installation
 |     POST      |      /signup        |    signup          |
 |     POST      |    /bets/create     |    create bet      |
 |     GET       |    /api/matches     |  get all matches   |
+|     GET       |      ^/active       | get active matches |
+|     GET       |      ^/(game)       |  get game matches  |
 |     POST      |  /api/matches/user  |  get user matches  |
 
 ## Credits
